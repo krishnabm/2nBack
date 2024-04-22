@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" path="res://scenes/PlaySlot/play_slot.gd" id="1_k73ik"]
 
-[node name="PlaySlot" type="Node2D"]
+[node name="PlaySlot" type="Button"]
 script = ExtResource("1_k73ik")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
 offset_left = -96.0
 offset_top = -96.0
 offset_right = 96.0

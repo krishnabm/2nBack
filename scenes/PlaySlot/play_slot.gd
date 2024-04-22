@@ -1,5 +1,5 @@
 class_name PlaySlot
-extends Node2D
+extends Control
 
 const self_scene = preload("res://scenes/PlaySlot/play_slot.tscn")
 
