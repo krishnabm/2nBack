@@ -1,38 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhdh74c7x010f"]
+[gd_scene load_steps=2 format=3 uid="uid://dhdh74c7x010f"]
 
-[ext_resource type="PackedScene" uid="uid://henswkulkw6t" path="res://scenes/PlaySlot/play_slot.tscn" id="1_ibq2t"]
 [ext_resource type="Script" path="res://scenes/GameBoard/game_board.gd" id="1_yfsnt"]
 
 [node name="GameBoard" type="Node2D"]
 script = ExtResource("1_yfsnt")
-
-[node name="PlaySlot0" parent="." instance=ExtResource("1_ibq2t")]
-position = Vector2(546, 198)
-
-[node name="PlaySlot1" parent="." instance=ExtResource("1_ibq2t")]
-position = Vector2(876, 198)
-slot_id = 1
-
-[node name="PlaySlot2" parent="." instance=ExtResource("1_ibq2t")]
-position = Vector2(1231, 199)
-slot_id = 2
-
-[node name="PlaySlot3" parent="." instance=ExtResource("1_ibq2t")]
-position = Vector2(533, 555)
-slot_id = 3
-
-[node name="PlaySlot4" parent="." instance=ExtResource("1_ibq2t")]
-position = Vector2(1244, 560)
-slot_id = 4
-
-[node name="PlaySlot5" parent="." instance=ExtResource("1_ibq2t")]
-position = Vector2(541, 894)
-slot_id = 5
-
-[node name="PlaySlot6" parent="." instance=ExtResource("1_ibq2t")]
-position = Vector2(909, 892)
-slot_id = 6
-
-[node name="PlaySlot7" parent="." instance=ExtResource("1_ibq2t")]
-position = Vector2(1255, 896)
-slot_id = 7
