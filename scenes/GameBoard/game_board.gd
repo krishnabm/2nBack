@@ -17,5 +17,4 @@ func generate_play_slots():
 		
 		nextChild.name = "PlaySlot" + str(id)
 		nextChild.add_to_group("PlaySlots")
-		#nextChild.custom_minimum_size = Vector2(200,200)
 		play_slot_grid.add_child(nextChild)
