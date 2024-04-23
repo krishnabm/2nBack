@@ -2,10 +2,12 @@ extends Node2D
 @onready var play_slot_grid = %PlaySlotGrid
 
 func _ready():
-	var tape = TapeGenerator.gen_key(10,5)
+	var tape = TapeGenerator.gen_key(10,4)
+	generate_play_slots()
+
+func generate_play_slots():
 	for i in range(0,9):
 		var id = i
-		
 		if i == 4:
 			id = 99
 		elif i > 4:
