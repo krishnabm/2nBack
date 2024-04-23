@@ -2,6 +2,7 @@ extends Node2D
 @onready var play_slot_grid = %PlaySlotGrid
 
 func _ready():
+	print(Global.GameParams.nValue)
 	var tape = TapeGenerator.gen_key(10,4)
 	generate_play_slots()
 
