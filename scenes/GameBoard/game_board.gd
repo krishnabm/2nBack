@@ -3,9 +3,17 @@ extends Node2D
 
 func _ready():
 	var tape = TapeGenerator.gen_key(10,5)
-	for n in range(0,8):
-		var nextChild: PlaySlot = PlaySlot.constructor(n)
-		nextChild.name = "PlaySlot" + str(n)
+	for i in range(0,9):
+		var id = i
+		
+		if i == 4:
+			id = 99
+		elif i > 4:
+			id = i-1
+			
+		var nextChild: PlaySlot = PlaySlot.constructor(id)
+		
+		nextChild.name = "PlaySlot" + str(id)
 		nextChild.add_to_group("PlaySlots")
-		#nextChild.global_position = PlacementHelper.place_game_slot(n)
+		#nextChild.custom_minimum_size = Vector2(200,200)
 		play_slot_grid.add_child(nextChild)
