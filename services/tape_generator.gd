@@ -18,3 +18,20 @@ static func gen_key(testLength: int, numMatches: int)-> Array[bool]:
 		numMatches -= 1
 	return ret
 	
+static func get_tape_from_key(tapeKey: Array[bool]):
+	var tape: Array[int] = []
+	for fastPtr in range(0,GameParams.testLength + GameParams.nValue):
+		var slowPtr = fastPtr - GameParams.nValue
+		
+		if slowPtr > -1:
+			if tapeKey[slowPtr] == true:
+				var curSlotIdx = tape[slowPtr]
+				tape.push_back(curSlotIdx)
+			else:
+				var curSlotIdx = randi_range(0, 7)
+				tape.push_back(curSlotIdx)
+		else:
+			var curSlotIdx = randi_range(0, 7)
+			tape.push_back(curSlotIdx)
+			
+	return tape
