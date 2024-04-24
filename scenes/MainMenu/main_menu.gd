@@ -8,3 +8,9 @@ func _on_start_button_pressed():
 
 func _on_exit_button_pressed():
 	get_tree().quit()
+
+func _process(_delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		get_tree().change_scene_to_file("res://scenes/GameBoard/game_board.tscn")
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit() 
