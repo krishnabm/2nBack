@@ -1,8 +1,8 @@
 # This script is autoloaded from Project Settings > Autoload
 #
 # Global Class Name : GameParams
-# This stores properties subject to frequent change during the game across multiple scenes
-extends Object
+# This stores config like properties
+extends Node2D
 
 var nValue = 1
 var testLength = 10

@@ -2,7 +2,7 @@
 #
 # Global Class Name : GameState
 # This stores properties subject to frequent change during the game across multiple scenes
-extends Object
+extends Node2D
 
 var truePositiveCount: int
 var falsePositiveCount: int
