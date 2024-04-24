@@ -14,3 +14,6 @@ func _process(_delta):
 		get_tree().change_scene_to_file("res://scenes/GameBoard/game_board.tscn")
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit() 
+
+func _ready():
+	GameState.init_store()

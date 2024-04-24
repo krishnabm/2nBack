@@ -5,6 +5,11 @@
 [node name="GameBoard" type="Node2D"]
 script = ExtResource("1_yfsnt")
 
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 3.0
+autostart = true
+
 [node name="LeftTapper" type="Button" parent="." groups=["Tappers"]]
 unique_name_in_owner = true
 offset_left = 40.0
@@ -34,8 +39,40 @@ theme_override_constants/h_separation = 25
 theme_override_constants/v_separation = 25
 columns = 3
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
-autostart = true
+[node name="ScoreBar" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+offset_left = 40.0
+offset_top = 30.0
+offset_right = 1880.0
+offset_bottom = 110.0
+
+[node name="TPLabel" type="Label" parent="ScoreBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "TP: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FPLabel" type="Label" parent="ScoreBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "FP: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FNLabel" type="Label" parent="ScoreBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "FN: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="LeftTapper" to="." method="_on_left_tapper_pressed"]
+[connection signal="pressed" from="RightTapper" to="." method="_on_right_tapper_pressed"]
