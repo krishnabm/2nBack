@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhdh74c7x010f"]
+[gd_scene load_steps=3 format=3 uid="uid://dhdh74c7x010f"]
 
 [ext_resource type="Script" path="res://scenes/GameBoard/game_board.gd" id="1_yfsnt"]
+[ext_resource type="Theme" uid="uid://m0avgysysptt" path="res://res/scoreboard_theme.tres" id="2_lcqmc"]
 
 [node name="GameBoard" type="Node2D"]
 script = ExtResource("1_yfsnt")
@@ -46,11 +47,29 @@ offset_top = 30.0
 offset_right = 1880.0
 offset_bottom = 110.0
 
+[node name="NLabel" type="Label" parent="ScoreBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_lcqmc")
+text = "NVal: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Round" type="Label" parent="ScoreBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_lcqmc")
+text = "Round: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="TPLabel" type="Label" parent="ScoreBar"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("2_lcqmc")
 text = "TP: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -59,7 +78,7 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("2_lcqmc")
 text = "FP: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -68,7 +87,7 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("2_lcqmc")
 text = "FN: 0"
 horizontal_alignment = 1
 vertical_alignment = 1

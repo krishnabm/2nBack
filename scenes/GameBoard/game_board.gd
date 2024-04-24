@@ -40,12 +40,14 @@ func generate_play_slots():
 		play_slot_grid.add_child(nextChild)
 
 func check_on_press():
-	if cur_tape_pointer >= tape.size() or pressed_since_last_frame == true:
+	# cur_tape_pointer is 1 ahead of the tape index we are interested in
+	var testing_ptr = cur_tape_pointer - 1
+	if testing_ptr >= tape.size() or pressed_since_last_frame == true:
 		return
 	
 	pressed_since_last_frame = true
 	
-	var key_idx = cur_tape_pointer - GameParams.nValue - 1
+	var key_idx = testing_ptr - GameParams.nValue
 	
 	if key_idx > -1 and tape_key[key_idx] == true:
 		GameState.truePositiveCount += 1
@@ -53,9 +55,10 @@ func check_on_press():
 		GameState.falsePositiveCount += 1
 
 func update_labels():
-	%TPLabel.text = %TPLabel.text.get_slice(":",0) + ":" + str(GameState.truePositiveCount)
-	%FPLabel.text = %FPLabel.text.get_slice(":",0) + ":" + str(GameState.falsePositiveCount)
-	%FNLabel.text = %FNLabel.text.get_slice(":",0) + ":" + str(GameState.falseNegativeCount)
+	%Round.text = %Round.text.get_slice(":",0) + ":" + str(cur_tape_pointer)
+	%TPLabel.text = %TPLabel.text.get_slice(":",0) + ": " + str(GameState.truePositiveCount)
+	%FPLabel.text = %FPLabel.text.get_slice(":",0) + ": " + str(GameState.falsePositiveCount)
+	%FNLabel.text = %FNLabel.text.get_slice(":",0) + ": " + str(GameState.falseNegativeCount)
 # Handlers
 func _on_timer_timeout():
 	if pressed_since_last_frame == false and cur_tape_pointer <= tape.size():
@@ -63,10 +66,14 @@ func _on_timer_timeout():
 	
 		if prev_key_idx > -1 and tape_key[prev_key_idx] == true:
 			GameState.falseNegativeCount += 1
-
-	if cur_tape_pointer >= tape.size():
+	
+	if cur_tape_pointer == tape.size():
 		cur_tape_pointer += 1
+		return
+
+	if cur_tape_pointer > tape.size():
 		timer.stop()
+		get_tree().change_scene_to_file("res://scenes/GameReport/game_report.tscn")
 		return
 	
 	pressed_since_last_frame = false
