@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://henswkulkw6t"]
+[gd_scene load_steps=7 format=3 uid="uid://henswkulkw6t"]
 
 [ext_resource type="Script" path="res://scenes/PlaySlot/play_slot.gd" id="1_k73ik"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="2_nn2wu"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="3_lnjr2"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="4_wxjy1"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="5_ojl2k"]
+[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="6_aqj7i"]
 
 [node name="PlaySlot" type="Control"]
 custom_minimum_size = Vector2(250, 250)
@@ -16,3 +21,35 @@ unique_name_in_owner = true
 layout_mode = 2
 offset_right = 250.0
 offset_bottom = 250.0
+
+[node name="StateChart" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_nn2wu")
+
+[node name="SlotState" type="Node" parent="StateChart"]
+script = ExtResource("3_lnjr2")
+initial_state = NodePath("Dormant")
+
+[node name="Dormant" type="Node" parent="StateChart/SlotState"]
+script = ExtResource("4_wxjy1")
+
+[node name="ToActive" type="Node" parent="StateChart/SlotState/Dormant"]
+script = ExtResource("5_ojl2k")
+to = NodePath("../../Active")
+event = &"SlotActivated"
+
+[node name="Active" type="Node" parent="StateChart/SlotState"]
+script = ExtResource("4_wxjy1")
+
+[node name="ToDormant" type="Node" parent="StateChart/SlotState/Active"]
+script = ExtResource("5_ojl2k")
+to = NodePath("../../Dormant")
+delay_seconds = 2.0
+
+[node name="StateChartDebugger" parent="." instance=ExtResource("6_aqj7i")]
+modulate = Color(0.8, 0.388235, 0.392157, 1)
+layout_mode = 1
+initial_node_to_watch = NodePath("../StateChart")
+
+[connection signal="state_entered" from="StateChart/SlotState/Active" to="." method="_on_active_state_entered"]
+[connection signal="state_exited" from="StateChart/SlotState/Active" to="." method="_on_active_state_exited"]

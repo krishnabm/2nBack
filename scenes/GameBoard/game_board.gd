@@ -1,9 +1,18 @@
 extends Node2D
-@onready var play_slot_grid = %PlaySlotGrid
+
+# Nodes
+@onready var play_slot_grid: GridContainer = %PlaySlotGrid
+@onready var timer = $Timer
+
+# Members
+var curTapePointer: int = 0
+var tape: Array[int]
+var tape_key: Array[bool]
+var play_slots: Array[PlaySlot]
 
 func _ready():
-	print(Global.GameParams.nValue)
-	var tape = TapeGenerator.gen_key(10,4)
+	tape_key = TapeGenerator.gen_key(GameParams.testLength,GameParams.get_test_positive_count())
+	tape = TapeGenerator.get_tape_from_key(tape_key)
 	generate_play_slots()
 
 func generate_play_slots():
@@ -18,4 +27,18 @@ func generate_play_slots():
 		
 		nextChild.name = "PlaySlot" + str(id)
 		nextChild.add_to_group("PlaySlots")
+		play_slots.push_back(nextChild)
 		play_slot_grid.add_child(nextChild)
+
+
+func _on_timer_timeout():
+	if curTapePointer >= tape.size():
+		timer.stop()
+		return
+	
+	var slot_id: int = tape[curTapePointer]
+	
+	var play_slot:PlaySlot = play_slots.filter(func(slot): return slot.slot_id == slot_id)[0]
+	play_slot.do_activate()
+	curTapePointer += 1
+	
