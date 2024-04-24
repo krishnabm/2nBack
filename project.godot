@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameParams="*res://services/global/game_params.gd"
+GameState="*res://services/global/game_state.gd"
 
 [display]
 
