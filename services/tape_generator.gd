@@ -29,6 +29,8 @@ static func get_tape_from_key(tapeKey: Array[bool]):
 				tape.push_back(curSlotIdx)
 			else:
 				var curSlotIdx = randi_range(0, 7)
+				if tape[slowPtr] == curSlotIdx:
+					curSlotIdx = (curSlotIdx + 1) % 8
 				tape.push_back(curSlotIdx)
 		else:
 			var curSlotIdx = randi_range(0, 7)
