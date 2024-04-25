@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhdh74c7x010f"]
+[gd_scene load_steps=4 format=3 uid="uid://dhdh74c7x010f"]
 
 [ext_resource type="Script" path="res://scenes/GameBoard/game_board.gd" id="1_yfsnt"]
 [ext_resource type="Theme" uid="uid://m0avgysysptt" path="res://res/scoreboard_theme.tres" id="2_lcqmc"]
+[ext_resource type="PackedScene" uid="uid://o2v7txet85ti" path="res://scenes/MenuBackground/menu_background.tscn" id="3_g5gcy"]
 
 [node name="GameBoard" type="Node2D"]
 script = ExtResource("1_yfsnt")
@@ -17,6 +18,7 @@ offset_left = 40.0
 offset_top = 140.0
 offset_right = 340.0
 offset_bottom = 940.0
+theme = ExtResource("2_lcqmc")
 action_mode = 0
 
 [node name="RightTapper" type="Button" parent="." groups=["Tappers"]]
@@ -25,6 +27,7 @@ offset_left = 1580.0
 offset_top = 140.0
 offset_right = 1880.0
 offset_bottom = 940.0
+theme = ExtResource("2_lcqmc")
 action_mode = 0
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -91,6 +94,10 @@ theme = ExtResource("2_lcqmc")
 text = "FN: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MenuBackground" parent="." instance=ExtResource("3_g5gcy")]
+speed = 0
+modulate_color = Color(1, 1, 1, 0.435294)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="LeftTapper" to="." method="_on_left_tapper_pressed"]

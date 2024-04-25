@@ -17,3 +17,7 @@ func _process(_delta):
 
 func _ready():
 	GameState.init_store()
+
+
+func _on_n_value_input_value_changed(value):
+	GameParams.nValue = value

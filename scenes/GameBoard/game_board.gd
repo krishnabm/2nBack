@@ -17,7 +17,8 @@ func _ready():
 	tape = TapeGenerator.get_tape_from_key(tape_key)
 	cur_tape_pointer = 0
 	pressed_since_last_frame = false
-
+	
+	%NLabel.text = %NLabel.text.get_slice(":",0) + ": " + str(GameParams.nValue)
 	generate_play_slots()
 
 func _process(_delta):
@@ -55,7 +56,7 @@ func check_on_press():
 		GameState.falsePositiveCount += 1
 
 func update_labels():
-	%Round.text = %Round.text.get_slice(":",0) + ":" + str(cur_tape_pointer)
+	%Round.text = %Round.text.get_slice(":",0) + ": " + str(cur_tape_pointer)
 	%TPLabel.text = %TPLabel.text.get_slice(":",0) + ": " + str(GameState.truePositiveCount)
 	%FPLabel.text = %FPLabel.text.get_slice(":",0) + ": " + str(GameState.falsePositiveCount)
 	%FNLabel.text = %FNLabel.text.get_slice(":",0) + ": " + str(GameState.falseNegativeCount)

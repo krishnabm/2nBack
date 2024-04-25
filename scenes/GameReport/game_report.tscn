@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8k3hhxuu64is"]
+[gd_scene load_steps=6 format=3 uid="uid://b8k3hhxuu64is"]
 
 [ext_resource type="Theme" uid="uid://m0avgysysptt" path="res://res/scoreboard_theme.tres" id="1_a4ais"]
 [ext_resource type="Script" path="res://scenes/GameReport/true_pos_val.gd" id="2_8ejqb"]
 [ext_resource type="Script" path="res://scenes/GameReport/false_pos_val.gd" id="3_yft5i"]
 [ext_resource type="Script" path="res://scenes/GameReport/false_neg_val.gd" id="4_u7vls"]
+[ext_resource type="PackedScene" uid="uid://o2v7txet85ti" path="res://scenes/MenuBackground/menu_background.tscn" id="5_2swe2"]
 
 [node name="GameReport" type="Node2D"]
 
@@ -86,3 +87,7 @@ theme = ExtResource("1_a4ais")
 text = "0"
 vertical_alignment = 1
 script = ExtResource("4_u7vls")
+
+[node name="MenuBackground" parent="." instance=ExtResource("5_2swe2")]
+speed = 0
+modulate_color = Color(1, 1, 1, 0.435294)
