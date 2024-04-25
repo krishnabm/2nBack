@@ -36,6 +36,7 @@ shadow_size = 10
 shadow_offset = Vector2(0, 10)
 
 [resource]
+default_font_size = 30
 Button/styles/focus = SubResource("StyleBoxEmpty_f4306")
 Button/styles/hover = SubResource("StyleBoxFlat_ca4r5")
 Button/styles/normal = SubResource("StyleBoxFlat_7h3cj")
