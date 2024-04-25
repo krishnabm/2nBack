@@ -4,3 +4,4 @@
 # Source code temp files
 scenes/**/*.tmp
 services/**/*.tmp
+bin/**/*.*
