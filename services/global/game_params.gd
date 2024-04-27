@@ -4,7 +4,7 @@
 # This stores config like properties
 extends Node2D
 
-var nValue = 1
+var nValue = 2
 var testLength = 10
 
 func get_test_positive_count():
