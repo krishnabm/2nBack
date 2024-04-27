@@ -1,22 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://7efvugkjmlkm"]
+[gd_scene load_steps=6 format=3 uid="uid://7efvugkjmlkm"]
 
 [ext_resource type="Script" path="res://scenes/MainMenu/main_menu.gd" id="1_8vw3y"]
 [ext_resource type="Theme" uid="uid://m0avgysysptt" path="res://res/scoreboard_theme.tres" id="2_x6ywm"]
 [ext_resource type="PackedScene" uid="uid://o2v7txet85ti" path="res://scenes/MenuBackground/menu_background.tscn" id="3_yay7v"]
+[ext_resource type="Script" path="res://scenes/MainMenu/NValDisplay.gd" id="4_c5r52"]
+[ext_resource type="Script" path="res://scenes/MainMenu/TestLenDisplay.gd" id="5_kr8sg"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_8vw3y")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("3_yay7v")]
+position = Vector2(-1808, -32)
 speed = 250
 direction = Vector2(-1, 0.5)
+
+[node name="GameTitle" type="Label" parent="."]
+offset_left = 464.0
+offset_top = 72.0
+offset_right = 1496.0
+offset_bottom = 373.0
+theme = ExtResource("2_x6ywm")
+theme_override_colors/font_color = Color(0.866667, 0.462745, 0.501961, 1)
+theme_override_colors/font_shadow_color = Color(0.298039, 0.486275, 0.619608, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 300
+text = "2n-Back!"
 
 [node name="StartButton" type="Button" parent="."]
 unique_name_in_owner = true
 offset_left = 621.0
-offset_top = 468.0
+offset_top = 744.0
 offset_right = 1374.0
-offset_bottom = 703.0
+offset_bottom = 979.0
 theme = ExtResource("2_x6ywm")
 theme_override_font_sizes/font_size = 80
 toggle_mode = true
@@ -25,29 +43,103 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ExitButton" type="Button" parent="."]
 unique_name_in_owner = true
-offset_left = 746.0
-offset_top = 779.0
-offset_right = 1242.0
-offset_bottom = 958.0
+offset_left = 1704.0
+offset_top = 32.0
+offset_right = 1850.0
+offset_bottom = 144.0
 theme = ExtResource("2_x6ywm")
 theme_override_font_sizes/font_size = 40
 text = "Exit"
 
-[node name="NValueInput" type="SpinBox" parent="."]
-unique_name_in_owner = true
-offset_left = 621.0
+[node name="ParamControlPanel" type="VBoxContainer" parent="."]
+offset_left = 168.0
 offset_top = 312.0
-offset_right = 1392.0
-offset_bottom = 392.0
-tooltip_text = "This is the N Value you will be tested on"
+offset_right = 1768.0
+offset_bottom = 712.0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="NValueControls" type="HBoxContainer" parent="ParamControlPanel"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="NValLabel" type="Label" parent="ParamControlPanel/NValueControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+tooltip_text = "This is the N- Value you will be tested on!"
+mouse_filter = 1
+theme_override_colors/font_color = Color(0.298039, 0.486275, 0.619608, 1)
+theme_override_font_sizes/font_size = 50
+text = "N Value"
+horizontal_alignment = 2
+
+[node name="NValueSlider" type="HSlider" parent="ParamControlPanel/NValueControls"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 7.0
+mouse_default_cursor_shape = 2
 theme = ExtResource("2_x6ywm")
 min_value = 1.0
 max_value = 20.0
 value = 1.0
 rounded = true
-alignment = 1
-prefix = "N Value -"
+tick_count = 20
+
+[node name="NValDisplay" type="Label" parent="ParamControlPanel/NValueControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+tooltip_text = "This is the N- Value you will be tested on!"
+mouse_filter = 1
+theme_override_colors/font_color = Color(0.298039, 0.486275, 0.619608, 1)
+theme_override_font_sizes/font_size = 50
+text = "1"
+script = ExtResource("4_c5r52")
+
+[node name="TestLengthControls" type="HBoxContainer" parent="ParamControlPanel"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TestLenLabel" type="Label" parent="ParamControlPanel/TestLengthControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+tooltip_text = "The length of the testing phase (after n inputs)"
+mouse_filter = 1
+theme_override_colors/font_color = Color(0.298039, 0.486275, 0.619608, 1)
+theme_override_font_sizes/font_size = 50
+text = "Test Length"
+horizontal_alignment = 2
+
+[node name="TestLenSlider" type="HSlider" parent="ParamControlPanel/TestLengthControls"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 7.0
+mouse_default_cursor_shape = 2
+theme = ExtResource("2_x6ywm")
+min_value = 5.0
+max_value = 20.0
+value = 5.0
+rounded = true
+tick_count = 16
+
+[node name="TestLenDisplay" type="Label" parent="ParamControlPanel/TestLengthControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+tooltip_text = "The length of the testing phase (after n inputs)"
+mouse_filter = 1
+theme_override_colors/font_color = Color(0.298039, 0.486275, 0.619608, 1)
+theme_override_font_sizes/font_size = 50
+text = "1"
+script = ExtResource("5_kr8sg")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="value_changed" from="NValueInput" to="." method="_on_n_value_input_value_changed"]
+[connection signal="value_changed" from="ParamControlPanel/NValueControls/NValueSlider" to="." method="_on_n_value_slider_value_changed"]
+[connection signal="value_changed" from="ParamControlPanel/TestLengthControls/TestLenSlider" to="." method="_on_test_len_slider_value_changed"]
