@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8k3hhxuu64is"]
+[gd_scene load_steps=7 format=3 uid="uid://b8k3hhxuu64is"]
 
 [ext_resource type="Theme" uid="uid://m0avgysysptt" path="res://res/scoreboard_theme.tres" id="1_a4ais"]
+[ext_resource type="Script" path="res://scenes/GameReport/game_report.gd" id="1_fr7dm"]
 [ext_resource type="Script" path="res://scenes/GameReport/true_pos_val.gd" id="2_8ejqb"]
 [ext_resource type="Script" path="res://scenes/GameReport/false_pos_val.gd" id="3_yft5i"]
 [ext_resource type="Script" path="res://scenes/GameReport/false_neg_val.gd" id="4_u7vls"]
 [ext_resource type="PackedScene" uid="uid://o2v7txet85ti" path="res://scenes/MenuBackground/menu_background.tscn" id="5_2swe2"]
 
 [node name="GameReport" type="Node2D"]
+script = ExtResource("1_fr7dm")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 1920.0
@@ -23,7 +25,7 @@ theme_override_constants/separation = 30
 [node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_a4ais")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 80
 text = "Session Report"
 horizontal_alignment = 1
 
@@ -32,6 +34,7 @@ layout_mode = 2
 
 [node name="TruePosHSplit" type="HSplitContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 40
 
 [node name="TPLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TruePosHSplit"]
 layout_mode = 2
@@ -51,6 +54,7 @@ script = ExtResource("2_8ejqb")
 
 [node name="FalsePosHSplit" type="HSplitContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 40
 
 [node name="FPLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FalsePosHSplit"]
 layout_mode = 2
@@ -70,6 +74,7 @@ script = ExtResource("3_yft5i")
 
 [node name="FalseNegHSplit" type="HSplitContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 40
 
 [node name="FNLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FalseNegHSplit"]
 layout_mode = 2
@@ -91,3 +96,28 @@ script = ExtResource("4_u7vls")
 [node name="MenuBackground" parent="." instance=ExtResource("5_2swe2")]
 speed = 0
 modulate_color = Color(1, 1, 1, 0.435294)
+
+[node name="ExitButton" type="Button" parent="."]
+unique_name_in_owner = true
+offset_left = 1704.0
+offset_top = 32.0
+offset_right = 1850.0
+offset_bottom = 144.0
+theme = ExtResource("1_a4ais")
+theme_override_font_sizes/font_size = 40
+text = "Exit"
+
+[node name="MenuButton" type="Button" parent="."]
+unique_name_in_owner = true
+offset_left = 621.0
+offset_top = 744.0
+offset_right = 1374.0
+offset_bottom = 979.0
+theme = ExtResource("1_a4ais")
+theme_override_font_sizes/font_size = 80
+toggle_mode = true
+text = "Main menu"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
