@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://3me51fmlu5ku"]
+
+[ext_resource type="Theme" uid="uid://m0avgysysptt" path="res://res/scoreboard_theme.tres" id="1_2kch6"]
+[ext_resource type="Script" path="res://scenes/Tappers/tappers.gd" id="1_dy61m"]
+
+[node name="Tappers" type="Node2D"]
+script = ExtResource("1_dy61m")
+
+[node name="LeftTapper" type="Button" parent="." groups=["Tappers"]]
+unique_name_in_owner = true
+offset_left = 40.0
+offset_top = 140.0
+offset_right = 340.0
+offset_bottom = 940.0
+theme = ExtResource("1_2kch6")
+action_mode = 0
+
+[node name="RightTapper" type="Button" parent="." groups=["Tappers"]]
+unique_name_in_owner = true
+offset_left = 1580.0
+offset_top = 140.0
+offset_right = 1880.0
+offset_bottom = 940.0
+theme = ExtResource("1_2kch6")
+action_mode = 0
+
+[connection signal="pressed" from="LeftTapper" to="." method="_on_left_tapper_pressed"]
+[connection signal="pressed" from="RightTapper" to="." method="_on_right_tapper_pressed"]

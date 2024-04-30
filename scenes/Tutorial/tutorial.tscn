@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddkbcwd481xsh"]
+
+[ext_resource type="PackedScene" uid="uid://3me51fmlu5ku" path="res://scenes/Tappers/tappers.tscn" id="1_6shge"]
+[ext_resource type="PackedScene" uid="uid://dntry7i4txlky" path="res://scenes/SlotGrid/slot_grid.tscn" id="1_jo52j"]
+[ext_resource type="PackedScene" uid="uid://o2v7txet85ti" path="res://scenes/MenuBackground/menu_background.tscn" id="3_l40vr"]
+
+[node name="Tutorial" type="Node2D"]
+
+[node name="Tappers" parent="." instance=ExtResource("1_6shge")]
+
+[node name="SlotGrid" parent="." instance=ExtResource("1_jo52j")]
+
+[node name="MenuBackground" parent="." instance=ExtResource("3_l40vr")]
+direction = Vector2(-0.25, 0.25)
+modulate_color = Color(0.321569, 0.321569, 0.321569, 1)

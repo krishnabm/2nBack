@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhdh74c7x010f"]
+[gd_scene load_steps=6 format=3 uid="uid://dhdh74c7x010f"]
 
 [ext_resource type="Script" path="res://scenes/GameBoard/game_board.gd" id="1_yfsnt"]
 [ext_resource type="Theme" uid="uid://m0avgysysptt" path="res://res/scoreboard_theme.tres" id="2_lcqmc"]
+[ext_resource type="PackedScene" uid="uid://3me51fmlu5ku" path="res://scenes/Tappers/tappers.tscn" id="2_pvr7g"]
 [ext_resource type="PackedScene" uid="uid://o2v7txet85ti" path="res://scenes/MenuBackground/menu_background.tscn" id="3_g5gcy"]
+[ext_resource type="PackedScene" uid="uid://dntry7i4txlky" path="res://scenes/SlotGrid/slot_grid.tscn" id="3_hqvqb"]
 
 [node name="GameBoard" type="Node2D"]
 script = ExtResource("1_yfsnt")
@@ -12,36 +14,9 @@ unique_name_in_owner = true
 wait_time = 3.0
 autostart = true
 
-[node name="LeftTapper" type="Button" parent="." groups=["Tappers"]]
-unique_name_in_owner = true
-offset_left = 40.0
-offset_top = 140.0
-offset_right = 340.0
-offset_bottom = 940.0
-theme = ExtResource("2_lcqmc")
-action_mode = 0
+[node name="Tappers" parent="." instance=ExtResource("2_pvr7g")]
 
-[node name="RightTapper" type="Button" parent="." groups=["Tappers"]]
-unique_name_in_owner = true
-offset_left = 1580.0
-offset_top = 140.0
-offset_right = 1880.0
-offset_bottom = 940.0
-theme = ExtResource("2_lcqmc")
-action_mode = 0
-
-[node name="CenterContainer" type="CenterContainer" parent="."]
-offset_left = 400.0
-offset_top = 140.0
-offset_right = 1520.0
-offset_bottom = 940.0
-
-[node name="PlaySlotGrid" type="GridContainer" parent="CenterContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_constants/h_separation = 25
-theme_override_constants/v_separation = 25
-columns = 3
+[node name="SlotGrid" parent="." instance=ExtResource("3_hqvqb")]
 
 [node name="ScoreBar" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
@@ -100,5 +75,4 @@ speed = 0
 modulate_color = Color(1, 1, 1, 0.435294)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="LeftTapper" to="." method="_on_left_tapper_pressed"]
-[connection signal="pressed" from="RightTapper" to="." method="_on_right_tapper_pressed"]
+[connection signal="on_tapper_pressed" from="Tappers" to="." method="_on_tappers_on_tapper_pressed"]

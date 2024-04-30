@@ -51,6 +51,16 @@ theme = ExtResource("2_x6ywm")
 theme_override_font_sizes/font_size = 40
 text = "Exit"
 
+[node name="TutorialButton" type="Button" parent="."]
+unique_name_in_owner = true
+offset_left = 59.0
+offset_top = 32.0
+offset_right = 260.0
+offset_bottom = 144.0
+theme = ExtResource("2_x6ywm")
+theme_override_font_sizes/font_size = 40
+text = "Tutorial"
+
 [node name="ParamControlPanel" type="VBoxContainer" parent="."]
 offset_left = 168.0
 offset_top = 312.0
@@ -141,5 +151,6 @@ script = ExtResource("5_kr8sg")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="TutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="value_changed" from="ParamControlPanel/NValueControls/NValueSlider" to="." method="_on_n_value_slider_value_changed"]
 [connection signal="value_changed" from="ParamControlPanel/TestLengthControls/TestLenSlider" to="." method="_on_test_len_slider_value_changed"]

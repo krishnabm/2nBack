@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dntry7i4txlky"]
+
+[ext_resource type="Script" path="res://scenes/SlotGrid/slot_grid.gd" id="1_t56s5"]
+
+[node name="SlotGrid" type="Node2D"]
+script = ExtResource("1_t56s5")
+
+[node name="SlotGrid" type="CenterContainer" parent="."]
+offset_left = 400.0
+offset_top = 140.0
+offset_right = 1520.0
+offset_bottom = 940.0
+
+[node name="PlaySlotGrid" type="GridContainer" parent="SlotGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 25
+theme_override_constants/v_separation = 25
+columns = 3

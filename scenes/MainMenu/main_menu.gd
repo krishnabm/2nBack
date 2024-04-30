@@ -28,3 +28,6 @@ func _on_n_value_slider_value_changed(value):
 
 func _on_test_len_slider_value_changed(value):
 	GameParams.testLength = value
+
+func _on_tutorial_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/Tutorial/tutorial.tscn")
