@@ -15,6 +15,10 @@ run/main_scene="res://scenes/MainMenu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+general/text_to_speech=true
+
 [autoload]
 
 GameParams="*res://services/global/game_params.gd"
