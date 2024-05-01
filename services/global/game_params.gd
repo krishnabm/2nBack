@@ -6,7 +6,9 @@ extends Node2D
 
 var nValue = 2
 var testLength = 10
+var dualMode = true
 
+# Number of true positives that must be generated based on test length
 func get_test_positive_count():
 	if testLength >= 20:
 		return 8

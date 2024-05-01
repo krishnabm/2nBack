@@ -10,15 +10,15 @@
 script = ExtResource("1_8vw3y")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("3_yay7v")]
-position = Vector2(-1808, -32)
+position = Vector2(-1874, -74)
 speed = 250
 direction = Vector2(-1, 0.5)
 
 [node name="GameTitle" type="Label" parent="."]
 offset_left = 464.0
-offset_top = 72.0
+offset_top = 188.0
 offset_right = 1496.0
-offset_bottom = 373.0
+offset_bottom = 489.0
 theme = ExtResource("2_x6ywm")
 theme_override_colors/font_color = Color(0.866667, 0.462745, 0.501961, 1)
 theme_override_colors/font_shadow_color = Color(0.298039, 0.486275, 0.619608, 1)
@@ -32,9 +32,9 @@ text = "2n-Back!"
 [node name="StartButton" type="Button" parent="."]
 unique_name_in_owner = true
 offset_left = 621.0
-offset_top = 744.0
+offset_top = 822.0
 offset_right = 1374.0
-offset_bottom = 979.0
+offset_bottom = 1022.0
 theme = ExtResource("2_x6ywm")
 theme_override_font_sizes/font_size = 80
 toggle_mode = true
@@ -63,9 +63,9 @@ text = "Tutorial"
 
 [node name="ParamControlPanel" type="VBoxContainer" parent="."]
 offset_left = 168.0
-offset_top = 312.0
+offset_top = 500.0
 offset_right = 1768.0
-offset_bottom = 712.0
+offset_bottom = 790.0
 theme_override_constants/separation = 50
 alignment = 1
 

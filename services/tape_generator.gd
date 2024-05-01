@@ -37,3 +37,24 @@ static func get_tape_from_key(tapeKey: Array[bool]):
 			tape.push_back(curSlotIdx)
 			
 	return tape
+
+static func idx_to_alphabet(idx: int)-> String:
+	match idx:
+		0:
+			return "a"
+		1:
+			return "f"
+		2:
+			return "l"
+		3:
+			return "o"
+		4:
+			return "p"
+		5:
+			return "q"
+		6:
+			return "r"
+		7:
+			return "s"
+		_:
+			return "Invalid"
