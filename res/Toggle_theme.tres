@@ -1,17 +1,7 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://dgbe5fkv6t16l"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dgbe5fkv6t16l"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qm7pj"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n87ni"]
-bg_color = Color(0.247059, 0.368627, 0.556863, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_su0xf"]
-bg_color = Color(0.329412, 0.4, 0.654902, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fc350"]
 
 [resource]
 CheckButton/constants/outline_size = 0
-CheckButton/styles/focus = SubResource("StyleBoxEmpty_qm7pj")
-CheckButton/styles/hover = SubResource("StyleBoxFlat_n87ni")
-CheckButton/styles/hover_pressed = SubResource("StyleBoxFlat_su0xf")
-CheckButton/styles/normal = SubResource("StyleBoxFlat_su0xf")
-CheckButton/styles/pressed = SubResource("StyleBoxFlat_su0xf")
+CheckButton/styles/focus = SubResource("StyleBoxEmpty_fc350")

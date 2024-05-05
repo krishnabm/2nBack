@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://o2v7txet85ti" path="res://scenes/MenuBackground/menu_background.tscn" id="3_yay7v"]
 [ext_resource type="Script" path="res://scenes/MainMenu/NValDisplay.gd" id="4_c5r52"]
 [ext_resource type="Script" path="res://scenes/MainMenu/TestLenDisplay.gd" id="5_kr8sg"]
-[ext_resource type="Theme" uid="uid://dgbe5fkv6t16l" path="res://res/Toggle_theme.tres" id="6_2gapy"]
+[ext_resource type="Theme" uid="uid://dgbe5fkv6t16l" path="res://res/Toggle_theme.tres" id="6_0l7e1"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_8vw3y")
@@ -150,12 +150,12 @@ theme_override_font_sizes/font_size = 50
 text = "1"
 script = ExtResource("5_kr8sg")
 
-[node name="CheckButton" type="CheckButton" parent="."]
-offset_left = 640.0
-offset_top = 38.0
-offset_right = 1181.0
-offset_bottom = 162.0
-theme = ExtResource("6_2gapy")
+[node name="CheckBox" type="CheckBox" parent="."]
+offset_left = 712.0
+offset_top = 64.0
+offset_right = 1056.0
+offset_bottom = 144.0
+theme = ExtResource("6_0l7e1")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

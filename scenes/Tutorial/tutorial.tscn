@@ -1,15 +1,79 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddkbcwd481xsh"]
+[gd_scene load_steps=10 format=3 uid="uid://ddkbcwd481xsh"]
 
 [ext_resource type="PackedScene" uid="uid://3me51fmlu5ku" path="res://scenes/Tappers/tappers.tscn" id="1_6shge"]
+[ext_resource type="Script" path="res://scenes/Tutorial/tutorial.gd" id="1_fd65n"]
 [ext_resource type="PackedScene" uid="uid://dntry7i4txlky" path="res://scenes/SlotGrid/slot_grid.tscn" id="1_jo52j"]
+[ext_resource type="PackedScene" uid="uid://c5o03ew42t0nm" path="res://dialogue/dialog.tscn" id="2_65vud"]
 [ext_resource type="PackedScene" uid="uid://o2v7txet85ti" path="res://scenes/MenuBackground/menu_background.tscn" id="3_l40vr"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="6_v5qr0"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="7_1c3c6"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_bobw1"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="9_uhb67"]
 
 [node name="Tutorial" type="Node2D"]
+script = ExtResource("1_fd65n")
+
+[node name="TutorialText" parent="." instance=ExtResource("2_65vud")]
+unique_name_in_owner = true
+messages = Array[String](["N back is a working memory test", "The difficulty of this test increases with higher values of N", "To start, let's attempt it at N = 1, i.e. 1-back exercise", "When N = 1, you need to remember the sequence 1 turn ago", "Pay attention to the slot which glows now!"])
 
 [node name="Tappers" parent="." instance=ExtResource("1_6shge")]
 
 [node name="SlotGrid" parent="." instance=ExtResource("1_jo52j")]
+unique_name_in_owner = true
 
 [node name="MenuBackground" parent="." instance=ExtResource("3_l40vr")]
 direction = Vector2(-0.25, 0.25)
 modulate_color = Color(0.321569, 0.321569, 0.321569, 1)
+metadata/_edit_lock_ = true
+
+[node name="TutorialState" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_v5qr0")
+
+[node name="RootState" type="Node" parent="TutorialState"]
+script = ExtResource("7_1c3c6")
+initial_state = NodePath("FirstText")
+
+[node name="FirstText" type="Node" parent="TutorialState/RootState"]
+script = ExtResource("8_bobw1")
+
+[node name="Transition" type="Node" parent="TutorialState/RootState/FirstText"]
+script = ExtResource("9_uhb67")
+to = NodePath("../../FirstImpulse")
+event = &"Next"
+delay_seconds = 0.5
+
+[node name="FirstImpulse" type="Node" parent="TutorialState/RootState"]
+script = ExtResource("8_bobw1")
+
+[node name="Transition" type="Node" parent="TutorialState/RootState/FirstImpulse"]
+script = ExtResource("9_uhb67")
+to = NodePath("../../SecondText")
+delay_seconds = 3.0
+
+[node name="SecondText" type="Node" parent="TutorialState/RootState"]
+script = ExtResource("8_bobw1")
+
+[node name="Transition" type="Node" parent="TutorialState/RootState/SecondText"]
+script = ExtResource("9_uhb67")
+to = NodePath("../../SecondImpulse")
+event = &"Next"
+delay_seconds = 0.5
+
+[node name="SecondImpulse" type="Node" parent="TutorialState/RootState"]
+script = ExtResource("8_bobw1")
+
+[node name="Transition" type="Node" parent="TutorialState/RootState/SecondImpulse"]
+script = ExtResource("9_uhb67")
+to = NodePath("../../ThirdText")
+delay_seconds = 3.0
+
+[node name="ThirdText" type="Node" parent="TutorialState/RootState"]
+script = ExtResource("8_bobw1")
+
+[connection signal="on_dialog_seq_ended" from="TutorialText" to="." method="_on_tutorial_text_on_dialog_seq_ended"]
+[connection signal="state_entered" from="TutorialState/RootState/FirstImpulse" to="." method="_on_first_impulse_state_entered"]
+[connection signal="state_entered" from="TutorialState/RootState/SecondText" to="." method="_on_second_text_state_entered"]
+[connection signal="state_entered" from="TutorialState/RootState/SecondImpulse" to="." method="_on_second_impulse_state_entered"]
+[connection signal="state_entered" from="TutorialState/RootState/ThirdText" to="." method="_on_third_text_state_entered"]
