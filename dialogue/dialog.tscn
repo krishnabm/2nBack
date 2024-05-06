@@ -17,6 +17,6 @@ theme_override_font_sizes/font_size = 30
 
 [node name="DialogTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 5.0
+wait_time = 4.0
 
 [connection signal="timeout" from="DialogTimer" to="." method="_on_dialog_timer_timeout"]

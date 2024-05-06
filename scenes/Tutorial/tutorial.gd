@@ -23,3 +23,18 @@ func _on_second_impulse_state_entered():
 func _on_third_text_state_entered():
 	tutorial_text.messages = ["Hmm, this wasn't the same one as before", "Let's keep observing"]
 	tutorial_text.start_dialog()
+
+func _on_third_impulse_state_entered():
+	slot_grid.do_activate_slot(5)
+
+func _on_fourth_text_state_entered():
+	tutorial_text.messages = ["That one matched! Hit the tapper!"]
+	tutorial_text.start_dialog()
+
+func _on_tappers_on_tapper_pressed(tapperName):
+	tutorial_state.send_event("Tapped")
+
+
+func _on_ending_state_entered():
+	tutorial_text.messages = ["Good Job!", "When N is at higher numbers, track repetitions N turns ago", "For e.g. at N = 2, tap when the displayed slot coincides with the one 2 turns ago"]
+	tutorial_text.start_dialog()

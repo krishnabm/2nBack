@@ -72,8 +72,45 @@ delay_seconds = 3.0
 [node name="ThirdText" type="Node" parent="TutorialState/RootState"]
 script = ExtResource("8_bobw1")
 
+[node name="Transition" type="Node" parent="TutorialState/RootState/ThirdText"]
+script = ExtResource("9_uhb67")
+to = NodePath("../../ThirdImpulse")
+event = &"Next"
+delay_seconds = 0.5
+
+[node name="ThirdImpulse" type="Node" parent="TutorialState/RootState"]
+script = ExtResource("8_bobw1")
+
+[node name="Transition" type="Node" parent="TutorialState/RootState/ThirdImpulse"]
+script = ExtResource("9_uhb67")
+to = NodePath("../../FourthText")
+delay_seconds = 3.0
+
+[node name="FourthText" type="Node" parent="TutorialState/RootState"]
+script = ExtResource("8_bobw1")
+
+[node name="Transition" type="Node" parent="TutorialState/RootState/FourthText"]
+script = ExtResource("9_uhb67")
+to = NodePath("../../TapperWait")
+event = &"Next"
+
+[node name="TapperWait" type="Node" parent="TutorialState/RootState"]
+script = ExtResource("8_bobw1")
+
+[node name="Transition" type="Node" parent="TutorialState/RootState/TapperWait"]
+script = ExtResource("9_uhb67")
+to = NodePath("../../Ending")
+event = &"Tapped"
+
+[node name="Ending" type="Node" parent="TutorialState/RootState"]
+script = ExtResource("8_bobw1")
+
 [connection signal="on_dialog_seq_ended" from="TutorialText" to="." method="_on_tutorial_text_on_dialog_seq_ended"]
+[connection signal="on_tapper_pressed" from="Tappers" to="." method="_on_tappers_on_tapper_pressed"]
 [connection signal="state_entered" from="TutorialState/RootState/FirstImpulse" to="." method="_on_first_impulse_state_entered"]
 [connection signal="state_entered" from="TutorialState/RootState/SecondText" to="." method="_on_second_text_state_entered"]
 [connection signal="state_entered" from="TutorialState/RootState/SecondImpulse" to="." method="_on_second_impulse_state_entered"]
 [connection signal="state_entered" from="TutorialState/RootState/ThirdText" to="." method="_on_third_text_state_entered"]
+[connection signal="state_entered" from="TutorialState/RootState/ThirdImpulse" to="." method="_on_third_impulse_state_entered"]
+[connection signal="state_entered" from="TutorialState/RootState/FourthText" to="." method="_on_fourth_text_state_entered"]
+[connection signal="state_entered" from="TutorialState/RootState/Ending" to="." method="_on_ending_state_entered"]
