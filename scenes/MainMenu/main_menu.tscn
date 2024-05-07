@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://7efvugkjmlkm"]
+[gd_scene load_steps=7 format=3 uid="uid://7efvugkjmlkm"]
 
 [ext_resource type="Script" path="res://scenes/MainMenu/main_menu.gd" id="1_8vw3y"]
 [ext_resource type="Theme" uid="uid://m0avgysysptt" path="res://res/scoreboard_theme.tres" id="2_x6ywm"]
 [ext_resource type="PackedScene" uid="uid://o2v7txet85ti" path="res://scenes/MenuBackground/menu_background.tscn" id="3_yay7v"]
 [ext_resource type="Script" path="res://scenes/MainMenu/NValDisplay.gd" id="4_c5r52"]
 [ext_resource type="Script" path="res://scenes/MainMenu/TestLenDisplay.gd" id="5_kr8sg"]
+[ext_resource type="Theme" uid="uid://dgbe5fkv6t16l" path="res://res/Toggle_theme.tres" id="6_wuuep"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_8vw3y")
@@ -23,8 +24,8 @@ theme = ExtResource("2_x6ywm")
 theme_override_colors/font_color = Color(0.866667, 0.462745, 0.501961, 1)
 theme_override_colors/font_shadow_color = Color(0.298039, 0.486275, 0.619608, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = -10
-theme_override_constants/shadow_offset_y = 10
+theme_override_constants/shadow_offset_x = -5
+theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 300
 text = "2n-Back!"
@@ -148,6 +149,20 @@ theme_override_colors/font_color = Color(0.298039, 0.486275, 0.619608, 1)
 theme_override_font_sizes/font_size = 50
 text = "1"
 script = ExtResource("5_kr8sg")
+
+[node name="CheckButton" type="CheckButton" parent="."]
+offset_left = 752.0
+offset_top = 32.0
+offset_right = 1176.0
+offset_bottom = 136.0
+theme = ExtResource("6_wuuep")
+theme_override_colors/font_color = Color(0.2, 0.329412, 0.419608, 1)
+theme_override_colors/font_pressed_color = Color(0.866667, 0.462745, 0.501961, 1)
+theme_override_colors/font_hover_color = Color(0.298039, 0.486275, 0.619608, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.866667, 0.462745, 0.501961, 1)
+theme_override_colors/font_focus_color = Color(0.298039, 0.486275, 0.619608, 1)
+text = "Easy mode"
+alignment = 1
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
