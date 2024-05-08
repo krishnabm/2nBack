@@ -1,3 +1,4 @@
+class_name MenuBackground
 extends Node2D
 
 @onready var parallax_background = %ParallaxBackground

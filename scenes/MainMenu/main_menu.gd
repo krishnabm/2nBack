@@ -4,11 +4,14 @@ extends Node2D
 @onready var exit_button = %ExitButton
 @onready var n_value_slider = %NValueSlider
 @onready var test_len_slider = %TestLenSlider
+@onready var dual_n_toggle_button: CheckButton = %DualNToggleButton
+@onready var parallax_background: MenuBackground = $ParallaxBackground
 
 func _ready():
 	GameState.init_store()
 	n_value_slider.value = GameParams.nValue
 	test_len_slider.value = GameParams.testLength
+	dual_n_toggle_button.button_pressed = GameParams.dualMode
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):
@@ -31,3 +34,16 @@ func _on_test_len_slider_value_changed(value):
 
 func _on_tutorial_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/Tutorial/tutorial.tscn")
+
+func _on_check_button_toggled(toggled_on: bool) -> void:
+	GameParams.dualMode = toggled_on
+	if (toggled_on):
+		dual_n_toggle_button.text = "Dual N Mode"
+		parallax_background.direction = Vector2(-1,0.5)
+		parallax_background.speed = 500
+		parallax_background.modulate_color = Color(1,0.9,0.8)
+	else:
+		dual_n_toggle_button.text = "Single N Mode"
+		parallax_background.direction = Vector2(1,0.5)
+		parallax_background.speed = 250
+		parallax_background.modulate_color = Color(1,1,1)

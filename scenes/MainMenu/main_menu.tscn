@@ -13,7 +13,7 @@ script = ExtResource("1_8vw3y")
 [node name="ParallaxBackground" parent="." instance=ExtResource("3_yay7v")]
 position = Vector2(-1874, -74)
 speed = 250
-direction = Vector2(-1, 0.5)
+direction = Vector2(1, 0.5)
 
 [node name="GameTitle" type="Label" parent="."]
 offset_left = 464.0
@@ -150,22 +150,24 @@ theme_override_font_sizes/font_size = 50
 text = "1"
 script = ExtResource("5_kr8sg")
 
-[node name="CheckButton" type="CheckButton" parent="."]
-offset_left = 752.0
-offset_top = 32.0
-offset_right = 1176.0
-offset_bottom = 136.0
+[node name="DualNToggleButton" type="CheckButton" parent="."]
+unique_name_in_owner = true
+offset_left = 679.0
+offset_top = 29.0
+offset_right = 1313.0
+offset_bottom = 165.0
 theme = ExtResource("6_wuuep")
 theme_override_colors/font_color = Color(0.2, 0.329412, 0.419608, 1)
 theme_override_colors/font_pressed_color = Color(0.866667, 0.462745, 0.501961, 1)
 theme_override_colors/font_hover_color = Color(0.298039, 0.486275, 0.619608, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.866667, 0.462745, 0.501961, 1)
 theme_override_colors/font_focus_color = Color(0.298039, 0.486275, 0.619608, 1)
-text = "Easy mode"
-alignment = 1
+text = "Single N Mode"
+alignment = 2
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="TutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="value_changed" from="ParamControlPanel/NValueControls/NValueSlider" to="." method="_on_n_value_slider_value_changed"]
 [connection signal="value_changed" from="ParamControlPanel/TestLengthControls/TestLenSlider" to="." method="_on_test_len_slider_value_changed"]
+[connection signal="toggled" from="DualNToggleButton" to="." method="_on_check_button_toggled"]
