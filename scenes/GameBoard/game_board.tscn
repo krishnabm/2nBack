@@ -15,8 +15,10 @@ wait_time = 3.0
 autostart = true
 
 [node name="Tappers" parent="." instance=ExtResource("2_pvr7g")]
+unique_name_in_owner = true
 
 [node name="SlotGrid" parent="." instance=ExtResource("3_hqvqb")]
+unique_name_in_owner = true
 
 [node name="ScoreBar" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
@@ -30,6 +32,10 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_lcqmc")
+theme_override_colors/font_color = Color(0.298039, 0.486275, 0.619608, 1)
+theme_override_colors/font_outline_color = Color(0.866667, 0.462745, 0.501961, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 64
 text = "NVal: 1"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -39,6 +45,10 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_lcqmc")
+theme_override_colors/font_color = Color(0.298039, 0.486275, 0.619608, 1)
+theme_override_colors/font_outline_color = Color(0.866667, 0.462745, 0.501961, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 64
 text = "Round: 1"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -48,6 +58,10 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_lcqmc")
+theme_override_colors/font_color = Color(0.298039, 0.486275, 0.619608, 1)
+theme_override_colors/font_outline_color = Color(0.866667, 0.462745, 0.501961, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 64
 text = "TP: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -57,6 +71,10 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_lcqmc")
+theme_override_colors/font_color = Color(0.298039, 0.486275, 0.619608, 1)
+theme_override_colors/font_outline_color = Color(0.866667, 0.462745, 0.501961, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 64
 text = "FP: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -66,6 +84,10 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_lcqmc")
+theme_override_colors/font_color = Color(0.298039, 0.486275, 0.619608, 1)
+theme_override_colors/font_outline_color = Color(0.866667, 0.462745, 0.501961, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 64
 text = "FN: 0"
 horizontal_alignment = 1
 vertical_alignment = 1

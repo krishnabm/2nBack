@@ -38,3 +38,7 @@ func _on_tappers_on_tapper_pressed(tapperName):
 func _on_ending_state_entered():
 	tutorial_text.messages = ["Good Job!", "When N is at higher numbers, track repetitions N turns ago", "For e.g. at N = 2, tap when the displayed slot coincides with the one 2 turns ago"]
 	tutorial_text.start_dialog()
+
+
+func _on_exit_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/MainMenu/main_menu.tscn")

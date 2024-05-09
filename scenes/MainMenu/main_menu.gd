@@ -5,6 +5,7 @@ extends Node2D
 @onready var n_value_slider = %NValueSlider
 @onready var test_len_slider = %TestLenSlider
 @onready var dual_n_toggle_button: CheckButton = %DualNToggleButton
+@onready var dual_n_toggle_label = %DualNToggleLabel
 @onready var parallax_background: MenuBackground = $ParallaxBackground
 
 func _ready():
@@ -38,12 +39,16 @@ func _on_tutorial_button_pressed():
 func _on_check_button_toggled(toggled_on: bool) -> void:
 	GameParams.dualMode = toggled_on
 	if (toggled_on):
-		dual_n_toggle_button.text = "Dual N Mode"
+		dual_n_toggle_label.text = "Dual N Mode"
+		dual_n_toggle_label.add_theme_color_override("font_color",  Color("dd7680"))
+		dual_n_toggle_label.add_theme_color_override("font_shadow_color", Color("ab5b63"))
 		parallax_background.direction = Vector2(-1,0.5)
 		parallax_background.speed = 500
 		parallax_background.modulate_color = Color(1,0.9,0.8)
 	else:
-		dual_n_toggle_button.text = "Single N Mode"
+		dual_n_toggle_label.text = "Single N Mode"
+		dual_n_toggle_label.add_theme_color_override("font_color",  Color("4c7c9e"))
+		dual_n_toggle_label.add_theme_color_override("font_shadow_color", Color("33546b"))
 		parallax_background.direction = Vector2(1,0.5)
 		parallax_background.speed = 250
 		parallax_background.modulate_color = Color(1,1,1)

@@ -4,7 +4,8 @@ extends Node2D
 @onready var play_slot_grid: GridContainer = %PlaySlotGrid
 @onready var timer = %Timer
 @onready var score_bar = %ScoreBar
-@onready var slot_grid: SlotGrid = $SlotGrid
+@onready var slot_grid: SlotGrid = %SlotGrid
+@onready var tappers: Tappers = %Tappers
 
 # Members
 var cur_tape_pointer: int
@@ -27,11 +28,17 @@ func _ready():
 	primary_tape = TapeGenerator.get_tape_from_key(primary_tape_key)
 
 	if GameParams.dualMode == true:
+		tappers.do_set_dual_mode(true)
 		secondary_tape_key = TapeGenerator.gen_key(GameParams.testLength,GameParams.get_test_positive_count())
 		secondary_tape = TapeGenerator.get_tape_from_key(secondary_tape_key)
 
 		var voices = DisplayServer.tts_get_voices_for_language("en")
-		voice_id = voices[0]
+		
+		match OS.get_name():
+			"Windows", "UWP":
+				voice_id = voices[1]
+			_:
+				voice_id = voices[0]
 	
 	%NLabel.text = %NLabel.text.get_slice(":",0) + ": " + str(GameParams.nValue)
 
@@ -43,7 +50,7 @@ func check_on_press(tapperName: String):
 	# cur_tape_pointer is 1 ahead of the tape index we are interested in
 	var testing_ptr = cur_tape_pointer - 1
 
-	if tapperName == "right":
+	if tapperName == "primary":
 		if testing_ptr >= primary_tape.size() or primary_pressed_since_last_frame == true:
 			return
 		
@@ -55,7 +62,7 @@ func check_on_press(tapperName: String):
 			GameState.truePositiveCount += 1
 		else :
 			GameState.falsePositiveCount += 1
-	elif tapperName == "left":
+	elif tapperName == "secondary":
 		if testing_ptr >= secondary_tape.size() or secondary_pressed_since_last_frame == true:
 			return
 		
@@ -81,7 +88,13 @@ func activate_test_inputs():
 	if GameParams.dualMode == true:
 		var secondary_id: int = secondary_tape[cur_tape_pointer]
 		var letter = TapeGenerator.idx_to_alphabet(secondary_id)
-		DisplayServer.tts_speak(letter, voice_id)
+		
+		# Fine-tweaking speed for certain letters.
+		match letter:
+			"a":
+				DisplayServer.tts_speak(letter, voice_id, 100, 0.8, 0.4, 0, true)
+			_:
+				DisplayServer.tts_speak(letter, voice_id, 100, 0.8, 0.6, 0, true)
 
 # Handlers
 func _on_timer_timeout():
@@ -115,4 +128,4 @@ func _on_tappers_on_tapper_pressed(tapperName):
 	if GameParams.dualMode == true:
 		check_on_press(tapperName)
 	else:
-		check_on_press("right")
+		check_on_press("primary")

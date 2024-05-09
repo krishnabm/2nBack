@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8k3hhxuu64is"]
+[gd_scene load_steps=8 format=3 uid="uid://b8k3hhxuu64is"]
 
 [ext_resource type="Theme" uid="uid://m0avgysysptt" path="res://res/scoreboard_theme.tres" id="1_a4ais"]
 [ext_resource type="Script" path="res://scenes/GameReport/game_report.gd" id="1_fr7dm"]
 [ext_resource type="Script" path="res://scenes/GameReport/true_pos_val.gd" id="2_8ejqb"]
+[ext_resource type="FontFile" uid="uid://yixu23br7tvg" path="res://res/assets/fonts/vergilia.ttf" id="3_5y4f3"]
 [ext_resource type="Script" path="res://scenes/GameReport/false_pos_val.gd" id="3_yft5i"]
 [ext_resource type="Script" path="res://scenes/GameReport/false_neg_val.gd" id="4_u7vls"]
 [ext_resource type="PackedScene" uid="uid://o2v7txet85ti" path="res://scenes/MenuBackground/menu_background.tscn" id="5_2swe2"]
@@ -25,70 +26,85 @@ theme_override_constants/separation = 30
 [node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_a4ais")
+theme_override_colors/font_color = Color(0.866667, 0.462745, 0.501961, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.329412, 0.419608, 1)
+theme_override_constants/outline_size = 30
+theme_override_constants/shadow_outline_size = 30
+theme_override_fonts/font = ExtResource("3_5y4f3")
 theme_override_font_sizes/font_size = 80
 text = "Session Report"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="TruePosHSplit" type="HSplitContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="PrimaryStatsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TruePosHSplit" type="HSplitContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/PrimaryStatsContainer"]
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="TPLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TruePosHSplit"]
+[node name="TPLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/PrimaryStatsContainer/TruePosHSplit"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_a4ais")
+theme_override_font_sizes/font_size = 50
 text = "True Positives"
 horizontal_alignment = 2
 
-[node name="TPVal" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TruePosHSplit"]
+[node name="TPVal" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/PrimaryStatsContainer/TruePosHSplit"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme = ExtResource("1_a4ais")
+theme_override_font_sizes/font_size = 50
 text = "0"
 vertical_alignment = 1
 script = ExtResource("2_8ejqb")
 
-[node name="FalsePosHSplit" type="HSplitContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="FalsePosHSplit" type="HSplitContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/PrimaryStatsContainer"]
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="FPLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FalsePosHSplit"]
+[node name="FPLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/PrimaryStatsContainer/FalsePosHSplit"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_a4ais")
+theme_override_font_sizes/font_size = 50
 text = "False Positives"
 horizontal_alignment = 2
 
-[node name="FPVal" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FalsePosHSplit"]
+[node name="FPVal" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/PrimaryStatsContainer/FalsePosHSplit"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme = ExtResource("1_a4ais")
+theme_override_font_sizes/font_size = 50
 text = "0"
 vertical_alignment = 1
 script = ExtResource("3_yft5i")
 
-[node name="FalseNegHSplit" type="HSplitContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="FalseNegHSplit" type="HSplitContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/PrimaryStatsContainer"]
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="FNLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FalseNegHSplit"]
+[node name="FNLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/PrimaryStatsContainer/FalseNegHSplit"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_a4ais")
+theme_override_font_sizes/font_size = 50
 text = "False Negatives
 "
 horizontal_alignment = 2
 
-[node name="FNVal" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FalseNegHSplit"]
+[node name="FNVal" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/PrimaryStatsContainer/FalseNegHSplit"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme = ExtResource("1_a4ais")
+theme_override_font_sizes/font_size = 50
 text = "0"
 vertical_alignment = 1
 script = ExtResource("4_u7vls")
@@ -104,7 +120,7 @@ offset_top = 32.0
 offset_right = 1850.0
 offset_bottom = 144.0
 theme = ExtResource("1_a4ais")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 50
 text = "Exit"
 
 [node name="MenuButton" type="Button" parent="."]
@@ -114,7 +130,7 @@ offset_top = 744.0
 offset_right = 1374.0
 offset_bottom = 979.0
 theme = ExtResource("1_a4ais")
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 120
 toggle_mode = true
 text = "Main menu"
 metadata/_edit_use_anchors_ = true

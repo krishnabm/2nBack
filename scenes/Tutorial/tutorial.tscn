@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddkbcwd481xsh"]
+[gd_scene load_steps=11 format=3 uid="uid://ddkbcwd481xsh"]
 
 [ext_resource type="PackedScene" uid="uid://3me51fmlu5ku" path="res://scenes/Tappers/tappers.tscn" id="1_6shge"]
 [ext_resource type="Script" path="res://scenes/Tutorial/tutorial.gd" id="1_fd65n"]
@@ -9,12 +9,14 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="7_1c3c6"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_bobw1"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="9_uhb67"]
+[ext_resource type="Theme" uid="uid://m0avgysysptt" path="res://res/scoreboard_theme.tres" id="10_tgn05"]
 
 [node name="Tutorial" type="Node2D"]
 script = ExtResource("1_fd65n")
 
 [node name="TutorialText" parent="." instance=ExtResource("2_65vud")]
 unique_name_in_owner = true
+theme = ExtResource("10_tgn05")
 messages = Array[String](["N back is a working memory test", "The difficulty of this test increases with higher values of N", "To start, let's attempt it at N = 1, i.e. 1-back exercise", "When N = 1, you need to remember the sequence 1 turn ago", "Pay attention to the slot which glows now!"])
 
 [node name="Tappers" parent="." instance=ExtResource("1_6shge")]
@@ -105,6 +107,16 @@ event = &"Tapped"
 [node name="Ending" type="Node" parent="TutorialState/RootState"]
 script = ExtResource("8_bobw1")
 
+[node name="ExitButton" type="Button" parent="."]
+unique_name_in_owner = true
+offset_left = 1736.0
+offset_top = 13.0
+offset_right = 1882.0
+offset_bottom = 125.0
+theme = ExtResource("10_tgn05")
+theme_override_font_sizes/font_size = 50
+text = "Exit"
+
 [connection signal="on_dialog_seq_ended" from="TutorialText" to="." method="_on_tutorial_text_on_dialog_seq_ended"]
 [connection signal="on_tapper_pressed" from="Tappers" to="." method="_on_tappers_on_tapper_pressed"]
 [connection signal="state_entered" from="TutorialState/RootState/FirstImpulse" to="." method="_on_first_impulse_state_entered"]
@@ -114,3 +126,4 @@ script = ExtResource("8_bobw1")
 [connection signal="state_entered" from="TutorialState/RootState/ThirdImpulse" to="." method="_on_third_impulse_state_entered"]
 [connection signal="state_entered" from="TutorialState/RootState/FourthText" to="." method="_on_fourth_text_state_entered"]
 [connection signal="state_entered" from="TutorialState/RootState/Ending" to="." method="_on_ending_state_entered"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
