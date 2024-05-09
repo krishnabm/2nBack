@@ -41,7 +41,7 @@ func _on_check_button_toggled(toggled_on: bool) -> void:
 	if (toggled_on):
 		dual_n_toggle_label.text = "Dual N Mode"
 		dual_n_toggle_label.add_theme_color_override("font_color",  Color("dd7680"))
-		dual_n_toggle_label.add_theme_color_override("font_shadow_color", Color("ab5b63"))
+		dual_n_toggle_label.add_theme_color_override("font_shadow_color", Color("784045"))
 		parallax_background.direction = Vector2(-1,0.5)
 		parallax_background.speed = 500
 		parallax_background.modulate_color = Color(1,0.9,0.8)
