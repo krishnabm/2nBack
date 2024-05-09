@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://dgbe5fkv6t16l"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dgbe5fkv6t16l"]
 
 [ext_resource type="Texture2D" uid="uid://bs3skytok0ett" path="res://res/assets/toggle_on.png" id="1_sr740"]
+[ext_resource type="FontFile" uid="uid://dw5mqfby8iubd" path="res://res/assets/fonts/Jersey10-Regular.ttf" id="1_vylsw"]
 [ext_resource type="Texture2D" uid="uid://bqtvlie8aynnl" path="res://res/assets/toggle_off.png" id="2_4ew0v"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fc350"]
@@ -8,6 +9,7 @@
 [resource]
 default_font_size = 64
 CheckButton/constants/outline_size = 0
+CheckButton/fonts/font = ExtResource("1_vylsw")
 CheckButton/icons/checked = ExtResource("1_sr740")
 CheckButton/icons/unchecked = ExtResource("2_4ew0v")
 CheckButton/styles/focus = SubResource("StyleBoxEmpty_fc350")
