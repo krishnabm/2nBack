@@ -28,16 +28,16 @@ func _on_exit_button_pressed():
 	get_tree().quit()
 
 func _on_n_value_slider_value_changed(value):
-	GameParams.nValue = value
+	GameParams.update_param("nValue",value)
 
 func _on_test_len_slider_value_changed(value):
-	GameParams.testLength = value
+	GameParams.update_param("testLength",value)
 
 func _on_tutorial_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/Tutorial/tutorial.tscn")
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
-	GameParams.dualMode = toggled_on
+	GameParams.update_param("dualMode",toggled_on)
 	if (toggled_on):
 		dual_n_toggle_label.text = "Dual N Mode"
 		dual_n_toggle_label.add_theme_color_override("font_color",  Color("dd7680"))
