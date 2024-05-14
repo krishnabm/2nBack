@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://3me51fmlu5ku" path="res://scenes/Tappers/tappers.tscn" id="1_6shge"]
 [ext_resource type="Script" path="res://scenes/Tutorial/tutorial.gd" id="1_fd65n"]
 [ext_resource type="PackedScene" uid="uid://dntry7i4txlky" path="res://scenes/SlotGrid/slot_grid.tscn" id="1_jo52j"]
-[ext_resource type="PackedScene" uid="uid://c5o03ew42t0nm" path="res://dialogue/dialog.tscn" id="2_65vud"]
+[ext_resource type="PackedScene" uid="uid://c5o03ew42t0nm" path="res://scenes/util/Dialogue/dialog.tscn" id="2_65vud"]
 [ext_resource type="PackedScene" uid="uid://o2v7txet85ti" path="res://scenes/MenuBackground/menu_background.tscn" id="3_l40vr"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="6_v5qr0"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="7_1c3c6"]

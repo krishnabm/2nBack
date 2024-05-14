@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c5o03ew42t0nm"]
 
-[ext_resource type="Script" path="res://dialogue/dialog.gd" id="1_8tdyw"]
+[ext_resource type="Script" path="res://scenes/util/Dialogue/dialog.gd" id="1_8tdyw"]
 
 [node name="Dialog" type="CenterContainer"]
 offset_left = 192.0
