@@ -24,7 +24,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 offset_left = 40.0
 offset_top = 30.0
-offset_right = 1880.0
+offset_right = 1624.0
 offset_bottom = 110.0
 
 [node name="NLabel" type="Label" parent="ScoreBar"]
@@ -95,6 +95,24 @@ vertical_alignment = 1
 [node name="MenuBackground" parent="." instance=ExtResource("3_g5gcy")]
 speed = 0
 modulate_color = Color(1, 1, 1, 0.435294)
+
+[node name="ExitButton" type="Button" parent="."]
+unique_name_in_owner = true
+offset_left = 1733.0
+offset_top = 16.0
+offset_right = 1879.0
+offset_bottom = 128.0
+theme = ExtResource("2_lcqmc")
+theme_override_font_sizes/font_size = 50
+text = "Exit"
+
+[node name="Popup" type="Popup" parent="."]
+title = "Alert"
+initial_position = 1
+size = Vector2i(300, 300)
+visible = true
+borderless = false
+keep_title_visible = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="on_tapper_pressed" from="Tappers" to="." method="_on_tappers_on_tapper_pressed"]

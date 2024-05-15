@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://m0avgysysptt"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://m0avgysysptt"]
 
 [ext_resource type="StyleBox" uid="uid://drdc3lvfqa1ar" path="res://res/grabber_shaded.tres" id="1_1wst6"]
 [ext_resource type="FontFile" uid="uid://dw5mqfby8iubd" path="res://res/assets/fonts/Jersey10-Regular.ttf" id="1_x8ufs"]
@@ -39,6 +39,13 @@ corner_radius_bottom_left = 30
 shadow_size = 5
 shadow_offset = Vector2(0, 2)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dlnox"]
+bg_color = Color(1, 0.6, 0.639216, 1)
+border_color = Color(0.67, 0.3551, 0.38659, 1)
+shadow_color = Color(0.67, 0.3551, 0.38659, 1)
+shadow_size = 2
+shadow_offset = Vector2(-4, 4)
+
 [resource]
 default_font_size = 30
 Button/font_sizes/font_size = 20
@@ -60,3 +67,4 @@ Label/constants/shadow_offset_y = 3
 Label/constants/shadow_outline_size = 1
 Label/font_sizes/font_size = 40
 Label/fonts/font = ExtResource("1_x8ufs")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_dlnox")
