@@ -1,10 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhdh74c7x010f"]
+[gd_scene load_steps=7 format=3 uid="uid://dhdh74c7x010f"]
 
 [ext_resource type="Script" path="res://scenes/GameBoard/game_board.gd" id="1_yfsnt"]
 [ext_resource type="Theme" uid="uid://m0avgysysptt" path="res://res/scoreboard_theme.tres" id="2_lcqmc"]
 [ext_resource type="PackedScene" uid="uid://3me51fmlu5ku" path="res://scenes/Tappers/tappers.tscn" id="2_pvr7g"]
 [ext_resource type="PackedScene" uid="uid://o2v7txet85ti" path="res://scenes/MenuBackground/menu_background.tscn" id="3_g5gcy"]
 [ext_resource type="PackedScene" uid="uid://dntry7i4txlky" path="res://scenes/SlotGrid/slot_grid.tscn" id="3_hqvqb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nh2ha"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.772549, 0.337255, 0.537255, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="GameBoard" type="Node2D"]
 script = ExtResource("1_yfsnt")
@@ -20,14 +33,28 @@ unique_name_in_owner = true
 [node name="SlotGrid" parent="." instance=ExtResource("3_hqvqb")]
 unique_name_in_owner = true
 
-[node name="ScoreBar" type="HBoxContainer" parent="."]
-unique_name_in_owner = true
+[node name="PanelContainer" type="PanelContainer" parent="."]
 offset_left = 40.0
-offset_top = 30.0
-offset_right = 1624.0
-offset_bottom = 110.0
+offset_top = 4.0
+offset_right = 1712.0
+offset_bottom = 132.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nh2ha")
 
-[node name="NLabel" type="Label" parent="ScoreBar"]
+[node name="Stack" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/Stack"]
+layout_mode = 2
+theme = ExtResource("2_lcqmc")
+theme_override_colors/font_color = Color(0.87, 0.3393, 0.401215, 1)
+text = "!! Debug Panel !!"
+horizontal_alignment = 1
+
+[node name="ScoreBar" type="HBoxContainer" parent="PanelContainer/Stack"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="NLabel" type="Label" parent="PanelContainer/Stack/ScoreBar"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -35,12 +62,12 @@ theme = ExtResource("2_lcqmc")
 theme_override_colors/font_color = Color(0.298039, 0.486275, 0.619608, 1)
 theme_override_colors/font_outline_color = Color(0.866667, 0.462745, 0.501961, 1)
 theme_override_constants/outline_size = 20
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 56
 text = "NVal: 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Round" type="Label" parent="ScoreBar"]
+[node name="Round" type="Label" parent="PanelContainer/Stack/ScoreBar"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -48,12 +75,12 @@ theme = ExtResource("2_lcqmc")
 theme_override_colors/font_color = Color(0.298039, 0.486275, 0.619608, 1)
 theme_override_colors/font_outline_color = Color(0.866667, 0.462745, 0.501961, 1)
 theme_override_constants/outline_size = 20
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 56
 text = "Round: 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TPLabel" type="Label" parent="ScoreBar"]
+[node name="TPLabel" type="Label" parent="PanelContainer/Stack/ScoreBar"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -61,12 +88,12 @@ theme = ExtResource("2_lcqmc")
 theme_override_colors/font_color = Color(0.298039, 0.486275, 0.619608, 1)
 theme_override_colors/font_outline_color = Color(0.866667, 0.462745, 0.501961, 1)
 theme_override_constants/outline_size = 20
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 56
 text = "TP: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FPLabel" type="Label" parent="ScoreBar"]
+[node name="FPLabel" type="Label" parent="PanelContainer/Stack/ScoreBar"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -74,12 +101,12 @@ theme = ExtResource("2_lcqmc")
 theme_override_colors/font_color = Color(0.298039, 0.486275, 0.619608, 1)
 theme_override_colors/font_outline_color = Color(0.866667, 0.462745, 0.501961, 1)
 theme_override_constants/outline_size = 20
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 56
 text = "FP: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FNLabel" type="Label" parent="ScoreBar"]
+[node name="FNLabel" type="Label" parent="PanelContainer/Stack/ScoreBar"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -87,14 +114,13 @@ theme = ExtResource("2_lcqmc")
 theme_override_colors/font_color = Color(0.298039, 0.486275, 0.619608, 1)
 theme_override_colors/font_outline_color = Color(0.866667, 0.462745, 0.501961, 1)
 theme_override_constants/outline_size = 20
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 56
 text = "FN: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MenuBackground" parent="." instance=ExtResource("3_g5gcy")]
 speed = 0
-modulate_color = Color(1, 1, 1, 0.435294)
 
 [node name="ExitButton" type="Button" parent="."]
 unique_name_in_owner = true

@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://henswkulkw6t"]
+[gd_scene load_steps=9 format=3 uid="uid://henswkulkw6t"]
 
 [ext_resource type="Script" path="res://scenes/PlaySlot/play_slot.gd" id="1_k73ik"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="2_nn2wu"]
+[ext_resource type="Material" uid="uid://fhb6r3pyv2at" path="res://res/play_slot-material.tres" id="2_r6vnu"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="3_lnjr2"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="4_wxjy1"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="5_ojl2k"]
-[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="6_aqj7i"]
+[ext_resource type="Texture2D" uid="uid://bi1h8s63620sk" path="res://res/play_slot_default_texture.tres" id="6_icm88"]
+[ext_resource type="Texture2D" uid="uid://dlpenrmbvhfgd" path="res://res/play_slot_audio_texture.tres" id="6_vpici"]
 
 [node name="PlaySlot" type="Control"]
 custom_minimum_size = Vector2(250, 250)
@@ -15,12 +17,6 @@ offset_right = 200.0
 offset_bottom = 200.0
 scale = Vector2(4, 4)
 script = ExtResource("1_k73ik")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-unique_name_in_owner = true
-layout_mode = 2
-offset_right = 250.0
-offset_bottom = 250.0
 
 [node name="StateChart" type="Node" parent="."]
 unique_name_in_owner = true
@@ -44,13 +40,29 @@ script = ExtResource("4_wxjy1")
 [node name="ToDormant" type="Node" parent="StateChart/SlotState/Active"]
 script = ExtResource("5_ojl2k")
 to = NodePath("../../Dormant")
-delay_seconds = 2.0
+delay_seconds = 1.5
 
-[node name="StateChartDebugger" parent="." instance=ExtResource("6_aqj7i")]
-modulate = Color(0.8, 0.388235, 0.392157, 1)
-layout_mode = 1
-enabled = false
-initial_node_to_watch = NodePath("../StateChart")
+[node name="DefaultSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(125, 125)
+texture = ExtResource("6_icm88")
+
+[node name="AudioSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(125, 125)
+texture = ExtResource("6_vpici")
+
+[node name="Node2D" type="Node2D" parent="."]
+material = ExtResource("2_r6vnu")
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+unique_name_in_owner = true
+visible = false
+use_parent_material = true
+offset_right = 250.0
+offset_bottom = 250.0
 
 [connection signal="state_entered" from="StateChart/SlotState/Active" to="." method="_on_active_state_entered"]
 [connection signal="state_exited" from="StateChart/SlotState/Active" to="." method="_on_active_state_exited"]
