@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp6t0c4gcuwph"]
+
+[ext_resource type="Script" path="res://scenes/util/PopupWrapper/popup_wrapper.gd" id="1_gfxqm"]
+
+[node name="PopupWrapper" type="Node2D"]
+script = ExtResource("1_gfxqm")
+
+[node name="Popup" type="Popup" parent="."]
+title = "Alert!"
+initial_position = 1
+visible = true
