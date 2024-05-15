@@ -6,6 +6,7 @@ extends Node2D
 @onready var score_bar = %ScoreBar
 @onready var slot_grid: SlotGrid = %SlotGrid
 @onready var tappers: Tappers = %Tappers
+@onready var alert_dialog = %AlertDialog
 
 # Members
 var cur_tape_pointer: int
@@ -59,9 +60,9 @@ func check_on_press(tapperName: String):
 		var key_idx = testing_ptr - GameParams.nValue
 		
 		if key_idx > -1 and primary_tape_key[key_idx] == true:
-			GameState.truePositiveCount += 1
+			GameState.truePositiveCount[0] += 1
 		else :
-			GameState.falsePositiveCount += 1
+			GameState.falsePositiveCount[0] += 1
 	elif tapperName == "secondary":
 		if testing_ptr >= secondary_tape.size() or secondary_pressed_since_last_frame == true:
 			return
@@ -71,15 +72,15 @@ func check_on_press(tapperName: String):
 		var key_idx = testing_ptr - GameParams.nValue
 		
 		if key_idx > -1 and secondary_tape_key[key_idx] == true:
-			GameState.truePositiveCount += 1
+			GameState.truePositiveCount[1] += 1
 		else :
-			GameState.falsePositiveCount += 1
+			GameState.falsePositiveCount[1] += 1
 
 func update_labels():
 	%Round.text = %Round.text.get_slice(":",0) + ": " + str(cur_tape_pointer)
-	%TPLabel.text = %TPLabel.text.get_slice(":",0) + ": " + str(GameState.truePositiveCount)
-	%FPLabel.text = %FPLabel.text.get_slice(":",0) + ": " + str(GameState.falsePositiveCount)
-	%FNLabel.text = %FNLabel.text.get_slice(":",0) + ": " + str(GameState.falseNegativeCount)
+	%TPLabel.text = %TPLabel.text.get_slice(":",0) + ": " + str(GameState.truePositiveCount[0] + GameState.truePositiveCount[1])
+	%FPLabel.text = %FPLabel.text.get_slice(":",0) + ": " + str(GameState.falsePositiveCount[0] + GameState.falsePositiveCount[1])
+	%FNLabel.text = %FNLabel.text.get_slice(":",0) + ": " + str(GameState.falseNegativeCount[0] + GameState.falseNegativeCount[1])
 
 func activate_test_inputs():
 	var slot_id: int = primary_tape[cur_tape_pointer]
@@ -103,10 +104,10 @@ func _on_timer_timeout():
 		
 		if prev_key_idx > -1:
 			if primary_pressed_since_last_frame == false and primary_tape_key[prev_key_idx] == true:
-				GameState.falseNegativeCount += 1
+				GameState.falseNegativeCount[0] += 1
 			
 			if GameParams.dualMode == true and secondary_pressed_since_last_frame == false and secondary_tape_key[prev_key_idx] == true:
-				GameState.falseNegativeCount += 1
+				GameState.falseNegativeCount[1] += 1
 	
 	if cur_tape_pointer == primary_tape.size():
 		cur_tape_pointer += 1
@@ -129,3 +130,14 @@ func _on_tappers_on_tapper_pressed(tapperName):
 		check_on_press(tapperName)
 	else:
 		check_on_press("primary")
+
+func _on_exit_button_pressed():
+	alert_dialog.visible = true
+
+
+func _on_exit_no_button_pressed():
+	alert_dialog.visible = false
+
+
+func _on_exit_yes_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/GameReport/game_report.tscn")
