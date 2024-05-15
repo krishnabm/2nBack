@@ -1,12 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8k3hhxuu64is"]
+[gd_scene load_steps=11 format=3 uid="uid://b8k3hhxuu64is"]
 
 [ext_resource type="Theme" uid="uid://m0avgysysptt" path="res://res/scoreboard_theme.tres" id="1_a4ais"]
 [ext_resource type="Script" path="res://scenes/GameReport/game_report.gd" id="1_fr7dm"]
 [ext_resource type="Script" path="res://scenes/GameReport/true_pos_val.gd" id="2_8ejqb"]
 [ext_resource type="FontFile" uid="uid://yixu23br7tvg" path="res://res/assets/fonts/vergilia.ttf" id="3_5y4f3"]
 [ext_resource type="Script" path="res://scenes/GameReport/false_pos_val.gd" id="3_yft5i"]
+[ext_resource type="Script" path="res://scenes/GameReport/true_pos_label.gd" id="4_0wil6"]
 [ext_resource type="Script" path="res://scenes/GameReport/false_neg_val.gd" id="4_u7vls"]
 [ext_resource type="PackedScene" uid="uid://o2v7txet85ti" path="res://scenes/MenuBackground/menu_background.tscn" id="5_2swe2"]
+[ext_resource type="Script" path="res://scenes/GameReport/false_pos_label.gd" id="6_1003b"]
+[ext_resource type="Script" path="res://scenes/GameReport/false_neg_label.gd" id="8_ati14"]
 
 [node name="GameReport" type="Node2D"]
 script = ExtResource("1_fr7dm")
@@ -53,6 +56,7 @@ theme = ExtResource("1_a4ais")
 theme_override_font_sizes/font_size = 50
 text = "True Positives"
 horizontal_alignment = 2
+script = ExtResource("4_0wil6")
 
 [node name="TPVal" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/PrimaryStatsContainer/TruePosHSplit"]
 layout_mode = 2
@@ -75,6 +79,7 @@ theme = ExtResource("1_a4ais")
 theme_override_font_sizes/font_size = 50
 text = "False Positives"
 horizontal_alignment = 2
+script = ExtResource("6_1003b")
 
 [node name="FPVal" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/PrimaryStatsContainer/FalsePosHSplit"]
 layout_mode = 2
@@ -98,6 +103,7 @@ theme_override_font_sizes/font_size = 50
 text = "False Negatives
 "
 horizontal_alignment = 2
+script = ExtResource("8_ati14")
 
 [node name="FNVal" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/PrimaryStatsContainer/FalseNegHSplit"]
 layout_mode = 2
