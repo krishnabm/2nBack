@@ -25,8 +25,8 @@ messages = Array[String](["N back is a working memory test", "The difficulty of 
 unique_name_in_owner = true
 
 [node name="MenuBackground" parent="." instance=ExtResource("3_l40vr")]
+speed = 10
 direction = Vector2(-0.25, 0.25)
-modulate_color = Color(0.321569, 0.321569, 0.321569, 1)
 metadata/_edit_lock_ = true
 
 [node name="TutorialState" type="Node" parent="."]
