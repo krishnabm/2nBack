@@ -1,9 +1,11 @@
 extends Node2D
+@onready var secondary_stats_container = %SecondaryStatsContainer
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if not GameParams.dualMode:
+		secondary_stats_container.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
