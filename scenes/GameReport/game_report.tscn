@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b8k3hhxuu64is"]
+[gd_scene load_steps=17 format=3 uid="uid://b8k3hhxuu64is"]
 
 [ext_resource type="Theme" uid="uid://m0avgysysptt" path="res://res/scoreboard_theme.tres" id="1_a4ais"]
 [ext_resource type="Script" path="res://scenes/GameReport/game_report.gd" id="1_fr7dm"]
@@ -10,6 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://o2v7txet85ti" path="res://scenes/MenuBackground/menu_background.tscn" id="5_2swe2"]
 [ext_resource type="Script" path="res://scenes/GameReport/false_pos_label.gd" id="6_1003b"]
 [ext_resource type="Script" path="res://scenes/GameReport/false_neg_label.gd" id="8_ati14"]
+[ext_resource type="Script" path="res://scenes/GameReport/sec_true_pos_label.gd" id="10_l04uy"]
+[ext_resource type="Script" path="res://scenes/GameReport/sec_true_pos_val.gd" id="11_wuf0c"]
+[ext_resource type="Script" path="res://scenes/GameReport/sec_false_pos_label.gd" id="12_6o370"]
+[ext_resource type="Script" path="res://scenes/GameReport/sec_false_pos_val.gd" id="13_nqusx"]
+[ext_resource type="Script" path="res://scenes/GameReport/sec_false_neg_label.gd" id="14_ob6g3"]
+[ext_resource type="Script" path="res://scenes/GameReport/sec_false_neg_val.gd" id="15_v5c50"]
 
 [node name="GameReport" type="Node2D"]
 script = ExtResource("1_fr7dm")
@@ -115,9 +121,83 @@ text = "0"
 vertical_alignment = 1
 script = ExtResource("4_u7vls")
 
+[node name="SecondaryStatsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TruePosHSplit" type="HSplitContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/SecondaryStatsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="TPLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/SecondaryStatsContainer/TruePosHSplit"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_a4ais")
+theme_override_font_sizes/font_size = 50
+text = "True Positives"
+horizontal_alignment = 2
+script = ExtResource("10_l04uy")
+
+[node name="TPVal" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/SecondaryStatsContainer/TruePosHSplit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_a4ais")
+theme_override_font_sizes/font_size = 50
+text = "0"
+vertical_alignment = 1
+script = ExtResource("11_wuf0c")
+
+[node name="FalsePosHSplit" type="HSplitContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/SecondaryStatsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="FPLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/SecondaryStatsContainer/FalsePosHSplit"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_a4ais")
+theme_override_font_sizes/font_size = 50
+text = "False Positives"
+horizontal_alignment = 2
+script = ExtResource("12_6o370")
+
+[node name="FPVal" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/SecondaryStatsContainer/FalsePosHSplit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_a4ais")
+theme_override_font_sizes/font_size = 50
+text = "0"
+vertical_alignment = 1
+script = ExtResource("13_nqusx")
+
+[node name="FalseNegHSplit" type="HSplitContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/SecondaryStatsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="FNLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/SecondaryStatsContainer/FalseNegHSplit"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_a4ais")
+theme_override_font_sizes/font_size = 50
+text = "False Negatives
+"
+horizontal_alignment = 2
+script = ExtResource("14_ob6g3")
+
+[node name="FNVal" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/SecondaryStatsContainer/FalseNegHSplit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_a4ais")
+theme_override_font_sizes/font_size = 50
+text = "0"
+vertical_alignment = 1
+script = ExtResource("15_v5c50")
+
 [node name="MenuBackground" parent="." instance=ExtResource("5_2swe2")]
 speed = 0
-modulate_color = Color(1, 1, 1, 0.435294)
 
 [node name="ExitButton" type="Button" parent="."]
 unique_name_in_owner = true
