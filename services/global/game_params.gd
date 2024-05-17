@@ -35,7 +35,9 @@ func get_test_positive_count():
 		return 5
 	if testLength >= 10:
 		return 4
-	return 4
+	if testLength >= 5:
+		return 2
+	return 2
 
 
 func update_param(paramName: String, value: Variant) -> void:
