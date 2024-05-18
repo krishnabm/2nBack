@@ -2,11 +2,16 @@ extends Node2D
 @onready var secondary_stats_container = %SecondaryStatsContainer
 
 var database: SQLite
+var dbOpsThread: Thread
 
 func _ready():
 	if not GameParams.dualMode:
 		secondary_stats_container.visible = false
 	
+	dbOpsThread = Thread.new()
+	dbOpsThread.start(store_stats_db.bind())
+
+func store_stats_db():
 	database = SQLite.new()
 	database.path = "user://data.db"
 	database.open_db()
@@ -39,9 +44,12 @@ func _ready():
 	}
 	database.insert_row("stats", data)
 
-
 func _on_exit_button_pressed():
+	queue_free()
 	get_tree().quit()
 
+func _exit_tree():
+	dbOpsThread.wait_to_finish()
+	
 func _on_menu_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/MainMenu/main_menu.tscn")
