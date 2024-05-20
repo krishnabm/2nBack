@@ -6,15 +6,19 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="3_lnjr2"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="4_wxjy1"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="5_ojl2k"]
-[ext_resource type="Texture2D" uid="uid://bi1h8s63620sk" path="res://res/play_slot_default_texture.tres" id="6_icm88"]
-[ext_resource type="Texture2D" uid="uid://dlpenrmbvhfgd" path="res://res/play_slot_audio_texture.tres" id="6_vpici"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u08om"]
+load_path = "res://.godot/imported/2nSlotDefaultIcon.png-1a60fd0ebba02480c8665fc5c1ec34f4.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_82pw2"]
+load_path = "res://.godot/imported/2nSlotAudioIcon.png-ee737576d0e57f07df82503c9d98b21e.ctex"
 
 [node name="PlaySlot" type="Control"]
 custom_minimum_size = Vector2(250, 250)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 200.0
-offset_bottom = 200.0
+offset_right = 250.0
+offset_bottom = 250.0
 scale = Vector2(4, 4)
 script = ExtResource("1_k73ik")
 
@@ -46,13 +50,13 @@ delay_seconds = 1.5
 unique_name_in_owner = true
 visible = false
 position = Vector2(125, 125)
-texture = ExtResource("6_icm88")
+texture = SubResource("CompressedTexture2D_u08om")
 
 [node name="AudioSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 visible = false
 position = Vector2(125, 125)
-texture = ExtResource("6_vpici")
+texture = SubResource("CompressedTexture2D_82pw2")
 
 [node name="Node2D" type="Node2D" parent="."]
 material = ExtResource("2_r6vnu")
