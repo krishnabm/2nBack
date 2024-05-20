@@ -24,6 +24,8 @@ func _ready():
 	primary_pressed_since_last_frame = false
 	secondary_pressed_since_last_frame = false
 	cur_tape_pointer = 0
+	
+	GameState.early_exit = false
 
 	primary_tape_key = TapeGenerator.gen_key(GameParams.testLength,GameParams.get_test_positive_count())
 	primary_tape = TapeGenerator.get_tape_from_key(primary_tape_key)
@@ -138,6 +140,6 @@ func _on_exit_button_pressed():
 func _on_exit_no_button_pressed():
 	alert_dialog.visible = false
 
-
 func _on_exit_yes_button_pressed():
+	GameState.early_exit = true
 	get_tree().change_scene_to_file("res://scenes/GameReport/game_report.tscn")

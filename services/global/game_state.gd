@@ -7,8 +7,10 @@ extends Node2D
 var truePositiveCount: Array[int]
 var falsePositiveCount: Array[int]
 var falseNegativeCount: Array[int]
+var early_exit: bool = false
 
 func init_store(_truePositiveCount: Array[int] = [0,0], _falsePositiveCount: Array[int] = [0,0], _falseNegativeCount: Array[int] = [0,0]):
 	self.truePositiveCount = _truePositiveCount
 	self.falsePositiveCount = _falsePositiveCount
 	self.falseNegativeCount = _falseNegativeCount
+	self.early_exit = false
