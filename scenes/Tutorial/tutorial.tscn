@@ -17,7 +17,7 @@ script = ExtResource("1_fd65n")
 [node name="TutorialText" parent="." instance=ExtResource("2_65vud")]
 unique_name_in_owner = true
 theme = ExtResource("10_tgn05")
-messages = Array[String](["N back is a working memory test", "The difficulty of this test increases with higher values of N", "To start, let's attempt it at N = 1, i.e. 1-back exercise", "When N = 1, you need to remember the sequence 1 turn ago", "Pay attention to the slot which glows now!"])
+messages = Array[String](["N back is a working memory test", "The difficulty of this test increases with higher values of N", "To start, let's attempt it at N = 1, i.e. 1-back exercise", "When N = 1, you need to remember the sequence 1 turn ago", "Pay attention to the shimmering slot now!"])
 
 [node name="Tappers" parent="." instance=ExtResource("1_6shge")]
 
