@@ -6,7 +6,7 @@ extends Node2D
 @onready var test_len_slider = %TestLenSlider
 @onready var dual_n_toggle_button: CheckButton = %DualNToggleButton
 @onready var dual_n_toggle_label = %DualNToggleLabel
-@onready var parallax_background: MenuBackground = $ParallaxBackground
+@onready var parallax_background: MenuBackground = %ParallaxBackground
 
 func _ready():
 	GameState.init_store()
