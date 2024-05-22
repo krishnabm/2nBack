@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpk6ai8i7vctm"]
+
+[ext_resource type="Script" path="res://scenes/App/app.gd" id="1_yiby6"]
+[ext_resource type="PackedScene" uid="uid://o2v7txet85ti" path="res://scenes/MenuBackground/menu_background.tscn" id="2_w7lpt"]
+
+[node name="App" type="Node2D"]
+script = ExtResource("1_yiby6")
+
+[node name="MenuBackground" parent="." instance=ExtResource("2_w7lpt")]
+unique_name_in_owner = true
+speed = 125
+direction = Vector2(1, 0.5)
