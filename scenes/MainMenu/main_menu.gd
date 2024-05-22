@@ -6,7 +6,6 @@ extends Node2D
 @onready var test_len_slider = %TestLenSlider
 @onready var dual_n_toggle_button: CheckButton = %DualNToggleButton
 @onready var dual_n_toggle_label = %DualNToggleLabel
-@onready var parallax_background: MenuBackground = %ParallaxBackground
 
 func _ready():
 	GameState.init_store()
@@ -16,13 +15,15 @@ func _ready():
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):
-		get_tree().change_scene_to_file("res://scenes/GameBoard/game_board.tscn")
+		get_tree().current_scene.call("update_bg_params", null, 50)
+		get_tree().current_scene.call("change_scene", "res://scenes/GameBoard/game_board.tscn")
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit() 
 
 
 func _on_start_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/GameBoard/game_board.tscn")
+	get_tree().current_scene.call("update_bg_params", null, 50)
+	get_tree().current_scene.call("change_scene", "res://scenes/GameBoard/game_board.tscn")
 
 func _on_exit_button_pressed():
 	get_tree().quit()
@@ -34,7 +35,8 @@ func _on_test_len_slider_value_changed(value):
 	GameParams.update_param("testLength",value)
 
 func _on_tutorial_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/Tutorial/tutorial.tscn")
+	get_tree().current_scene.call("update_bg_params", null, 50)
+	get_tree().current_scene.call("change_scene", "res://scenes/Tutorial/tutorial.tscn")
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
 	GameParams.update_param("dualMode",toggled_on)
@@ -42,13 +44,9 @@ func _on_check_button_toggled(toggled_on: bool) -> void:
 		dual_n_toggle_label.text = "Dual N Mode"
 		dual_n_toggle_label.add_theme_color_override("font_color",  Color("dd7680"))
 		dual_n_toggle_label.add_theme_color_override("font_shadow_color", Color("784045"))
-		parallax_background.direction = Vector2(-1,0.5)
-		parallax_background.speed = 250
-		#parallax_background.modulate_color = Color(1,0.9,0.8)
+		get_tree().current_scene.call("update_bg_params", Vector2(-1,0.5), 250)
 	else:
 		dual_n_toggle_label.text = "Single N Mode"
 		dual_n_toggle_label.add_theme_color_override("font_color",  Color("4c7c9e"))
 		dual_n_toggle_label.add_theme_color_override("font_shadow_color", Color("33546b"))
-		parallax_background.direction = Vector2(1,0.5)
-		parallax_background.speed = 125
-		#parallax_background.modulate_color = Color(1,1,1)
+		get_tree().current_scene.call("update_bg_params", Vector2(1,0.5), 125)

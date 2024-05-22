@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b8k3hhxuu64is"]
+[gd_scene load_steps=17 format=3 uid="uid://b8k3hhxuu64is"]
 
 [ext_resource type="Theme" uid="uid://m0avgysysptt" path="res://res/scoreboard_theme.tres" id="1_a4ais"]
 [ext_resource type="Script" path="res://scenes/GameReport/game_report.gd" id="1_fr7dm"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://scenes/GameReport/false_pos_val.gd" id="3_yft5i"]
 [ext_resource type="Script" path="res://scenes/GameReport/true_pos_label.gd" id="4_0wil6"]
 [ext_resource type="Script" path="res://scenes/GameReport/false_neg_val.gd" id="4_u7vls"]
-[ext_resource type="PackedScene" uid="uid://o2v7txet85ti" path="res://scenes/MenuBackground/menu_background.tscn" id="5_2swe2"]
 [ext_resource type="Script" path="res://scenes/GameReport/false_pos_label.gd" id="6_1003b"]
 [ext_resource type="Script" path="res://scenes/GameReport/false_neg_label.gd" id="8_ati14"]
 [ext_resource type="Script" path="res://scenes/GameReport/sec_true_pos_label.gd" id="10_l04uy"]
@@ -200,10 +199,6 @@ script = ExtResource("15_v5c50")
 [node name="Chart" parent="MarginContainer/VBoxContainer" instance=ExtResource("16_2w4vk")]
 unique_name_in_owner = true
 layout_mode = 2
-
-[node name="MenuBackground" parent="." instance=ExtResource("5_2swe2")]
-position = Vector2(-15, -10)
-speed = 0
 
 [node name="ExitButton" type="Button" parent="."]
 unique_name_in_owner = true

@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhdh74c7x010f"]
+[gd_scene load_steps=6 format=3 uid="uid://dhdh74c7x010f"]
 
 [ext_resource type="Script" path="res://scenes/GameBoard/game_board.gd" id="1_yfsnt"]
 [ext_resource type="Theme" uid="uid://m0avgysysptt" path="res://res/scoreboard_theme.tres" id="2_lcqmc"]
 [ext_resource type="PackedScene" uid="uid://3me51fmlu5ku" path="res://scenes/Tappers/tappers.tscn" id="2_pvr7g"]
-[ext_resource type="PackedScene" uid="uid://o2v7txet85ti" path="res://scenes/MenuBackground/menu_background.tscn" id="3_g5gcy"]
 [ext_resource type="PackedScene" uid="uid://dntry7i4txlky" path="res://scenes/SlotGrid/slot_grid.tscn" id="3_hqvqb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nh2ha"]
@@ -118,9 +117,6 @@ theme_override_font_sizes/font_size = 56
 text = "FN: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="MenuBackground" parent="." instance=ExtResource("3_g5gcy")]
-speed = 0
 
 [node name="ExitButton" type="Button" parent="."]
 unique_name_in_owner = true

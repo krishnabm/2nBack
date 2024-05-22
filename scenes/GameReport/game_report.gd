@@ -19,6 +19,8 @@ func _ready():
 	
 	dbOpsThread = Thread.new()
 	dbOpsThread.start(store_stats_db.bind())
+	
+	get_tree().current_scene.call("update_bg_params", Vector2(1,0.5), 125)
 
 func store_stats_db():
 	database = SQLite.new()
@@ -114,5 +116,10 @@ func _on_exit_button_pressed():
 	queue_free()
 	get_tree().quit()
 func _on_menu_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/MainMenu/main_menu.tscn")
+	if GameParams.dualMode:
+		get_tree().current_scene.call("update_bg_params", Vector2(-1,0.5), 250)
+	else:
+		get_tree().current_scene.call("update_bg_params", Vector2(1,0.5), 125)
+
+	get_tree().current_scene.call("change_scene", "res://scenes/MainMenu/main_menu.tscn")
 #endregion

@@ -41,4 +41,8 @@ func _on_ending_state_entered():
 
 
 func _on_exit_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/MainMenu/main_menu.tscn")
+	if GameParams.dualMode:
+		get_tree().current_scene.call("update_bg_params", Vector2(-1,0.5), 250)
+	else:
+		get_tree().current_scene.call("update_bg_params", Vector2(1,0.5), 125)
+	get_tree().current_scene.call("change_scene", "res://scenes/MainMenu/main_menu.tscn")

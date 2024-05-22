@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddkbcwd481xsh"]
+[gd_scene load_steps=10 format=3 uid="uid://ddkbcwd481xsh"]
 
 [ext_resource type="PackedScene" uid="uid://3me51fmlu5ku" path="res://scenes/Tappers/tappers.tscn" id="1_6shge"]
 [ext_resource type="Script" path="res://scenes/Tutorial/tutorial.gd" id="1_fd65n"]
 [ext_resource type="PackedScene" uid="uid://dntry7i4txlky" path="res://scenes/SlotGrid/slot_grid.tscn" id="1_jo52j"]
 [ext_resource type="PackedScene" uid="uid://c5o03ew42t0nm" path="res://scenes/util/Dialogue/dialog.tscn" id="2_65vud"]
-[ext_resource type="PackedScene" uid="uid://o2v7txet85ti" path="res://scenes/MenuBackground/menu_background.tscn" id="3_l40vr"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="6_v5qr0"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="7_1c3c6"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_bobw1"]
@@ -23,11 +22,6 @@ messages = Array[String](["N back is a working memory test", "The difficulty of 
 
 [node name="SlotGrid" parent="." instance=ExtResource("1_jo52j")]
 unique_name_in_owner = true
-
-[node name="MenuBackground" parent="." instance=ExtResource("3_l40vr")]
-speed = 10
-direction = Vector2(-0.25, 0.25)
-metadata/_edit_lock_ = true
 
 [node name="TutorialState" type="Node" parent="."]
 unique_name_in_owner = true
