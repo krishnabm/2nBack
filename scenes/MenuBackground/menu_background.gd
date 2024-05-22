@@ -11,8 +11,8 @@ extends Node2D
 func _process(delta):
 	parallax_background.scroll_base_offset += delta*speed*direction
 	
-	var material: ShaderMaterial = primary_bg_sprite.material
+	var bgMaterial: ShaderMaterial = primary_bg_sprite.material
 	if GameParams.dualMode:
-		material.set_shader_parameter("tintShift", true)
+		bgMaterial.set_shader_parameter("tintShift", true)
 	else:
-		material.set_shader_parameter("tintShift", false)
+		bgMaterial.set_shader_parameter("tintShift", false)
