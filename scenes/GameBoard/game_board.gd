@@ -117,7 +117,6 @@ func _on_timer_timeout():
 
 	if cur_tape_pointer > primary_tape.size():
 		timer.stop()
-		get_tree().current_scene.call("update_bg_params", null, 250)
 		get_tree().current_scene.call("change_scene", "res://scenes/GameReport/game_report.tscn")
 		return
 	
@@ -143,5 +142,4 @@ func _on_exit_no_button_pressed():
 
 func _on_exit_yes_button_pressed():
 	GameState.early_exit = true
-	get_tree().current_scene.call("update_bg_params", null, 250)
 	get_tree().current_scene.call("change_scene", "res://scenes/GameReport/game_report.tscn")

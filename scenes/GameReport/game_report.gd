@@ -20,7 +20,7 @@ func _ready():
 	dbOpsThread = Thread.new()
 	dbOpsThread.start(store_stats_db.bind())
 	
-	get_tree().current_scene.call("update_bg_params", Vector2(1,0.5), 125)
+	get_tree().current_scene.call("update_bg_params", null, 250)
 
 func store_stats_db():
 	database = SQLite.new()
