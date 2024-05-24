@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpk6ai8i7vctm"]
+[gd_scene load_steps=5 format=3 uid="uid://bpk6ai8i7vctm"]
 
+[ext_resource type="Shader" path="res://res/shaders/app.gdshader" id="1_mtgm5"]
 [ext_resource type="Script" path="res://scenes/App/app.gd" id="1_yiby6"]
 [ext_resource type="PackedScene" uid="uid://o2v7txet85ti" path="res://scenes/MenuBackground/menu_background.tscn" id="2_w7lpt"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c6npk"]
+shader = ExtResource("1_mtgm5")
+shader_parameter/scanline_count = 50.0
+
 [node name="App" type="Node2D"]
+material = SubResource("ShaderMaterial_c6npk")
 script = ExtResource("1_yiby6")
 
 [node name="MenuBackground" parent="." instance=ExtResource("2_w7lpt")]
