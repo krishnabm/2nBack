@@ -5,3 +5,4 @@
 scenes/**/*.tmp
 services/**/*.tmp
 bin/**/*.*
+**/*.TMP
