@@ -9,11 +9,13 @@ func _ready():
 	current_scene = main_menu_scn.instantiate()
 	add_child(current_scene)
 
-func update_bg_params(direction = null, speed = null):
+func update_bg_params(direction = null, speed = null, shouldRefreshShaders = false):
 	if direction != null:
 		menu_background.direction = direction
 	if speed != null:
 		menu_background.speed = speed
+	if shouldRefreshShaders:
+		menu_background.updateShaders()
 
 func change_scene(scenePath: String):
 	remove_child(current_scene)

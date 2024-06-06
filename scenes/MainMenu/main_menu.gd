@@ -44,9 +44,9 @@ func _on_check_button_toggled(toggled_on: bool) -> void:
 		dual_n_toggle_label.text = "Dual N Mode"
 		dual_n_toggle_label.add_theme_color_override("font_color",  Color("dd7680"))
 		dual_n_toggle_label.add_theme_color_override("font_shadow_color", Color("784045"))
-		get_tree().current_scene.call("update_bg_params", Vector2(-1,0.5), 250)
+		get_tree().current_scene.call("update_bg_params", Vector2(-1,0.5), 250, true)
 	else:
 		dual_n_toggle_label.text = "Single N Mode"
 		dual_n_toggle_label.add_theme_color_override("font_color",  Color("4c7c9e"))
 		dual_n_toggle_label.add_theme_color_override("font_shadow_color", Color("33546b"))
-		get_tree().current_scene.call("update_bg_params", Vector2(1,0.5), 125)
+		get_tree().current_scene.call("update_bg_params", Vector2(1,0.5), 125, true)
