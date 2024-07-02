@@ -59,9 +59,19 @@ func store_stats_db():
 	print(fetch_stats_db(database))
 
 func fetch_stats_db(_database: SQLite):
-	var res = _database.select_rows("stats", "", ["*"])
-	var dateTimeStrs = res.map(func(row): return Time.get_datetime_string_from_unix_time(row.tsId))
-	var nValues = res.map(func(row): return row.nValue)
+	var query_string : String = "SELECT * FROM stats ORDER BY tsId DESC LIMIT ?;"
+	var param_bindings : Array = [GameParams.statsChartDepth]
+	
+	var success = _database.query_with_bindings(query_string, param_bindings)
+	
+	if success:
+		var res: Array = _database.get_query_result()
+		res.reverse();
+		var tsIds = res.map(func(row): return row.tsId)
+		var nValues = res.map(func(row): return row.nValue)
+		var aggrFalseCount = res.map(func(row): return row.pfp + row.sfp + row.pfn + row.sfn)
+		return [tsIds, nValues, aggrFalseCount]
+	
 	
 	#region easy charts
 	#var cp: ChartProperties = ChartProperties.new()
@@ -102,8 +112,6 @@ func fetch_stats_db(_database: SQLite):
 	## Now let's plot our data
 	#chart.plot([f1], cp)
 	#endregion
-	
-	return [dateTimeStrs, nValues]
 
 func _exit_tree():
 	if dbOpsThread.is_alive() or dbOpsThread.is_started():
