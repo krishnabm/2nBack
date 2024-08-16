@@ -1,12 +1,11 @@
 extends Node2D
 
 # Nodes
-@onready var play_slot_grid: GridContainer = %PlaySlotGrid
 @onready var timer = %Timer
-@onready var score_bar = %ScoreBar
 @onready var slot_grid: SlotGrid = %SlotGrid
 @onready var tappers: Tappers = %Tappers
 @onready var alert_dialog = %AlertDialog
+@onready var debug_panel = %DebugPanel
 
 # Members
 var cur_tape_pointer: int
@@ -44,9 +43,14 @@ func _ready():
 				voice_id = voices[0]
 	
 	%NLabel.text = %NLabel.text.get_slice(":",0) + ": " + str(GameParams.nValue)
+	
+	if OS.has_feature("debug") :
+		debug_panel.visible = true
+	else :
+		debug_panel.visible = false
 
 func _process(_delta):
-	if (score_bar.visible):
+	if (debug_panel.visible):
 		update_labels()
 
 func check_on_press(tapperName: String):

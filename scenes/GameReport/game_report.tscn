@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b8k3hhxuu64is"]
+[gd_scene load_steps=17 format=3 uid="uid://b8k3hhxuu64is"]
 
 [ext_resource type="Theme" uid="uid://m0avgysysptt" path="res://res/scoreboard_theme.tres" id="1_a4ais"]
 [ext_resource type="Script" path="res://scenes/GameReport/game_report.gd" id="1_fr7dm"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scenes/GameReport/sec_false_pos_val.gd" id="13_nqusx"]
 [ext_resource type="Script" path="res://scenes/GameReport/sec_false_neg_label.gd" id="14_ob6g3"]
 [ext_resource type="Script" path="res://scenes/GameReport/sec_false_neg_val.gd" id="15_v5c50"]
+[ext_resource type="PackedScene" uid="uid://c5y1k6dyndtsh" path="res://scenes/util/LineGraph/line_graph.tscn" id="16_pkbyk"]
 
 [node name="GameReport" type="Node2D"]
 script = ExtResource("1_fr7dm")
@@ -216,6 +217,13 @@ theme_override_font_sizes/font_size = 120
 toggle_mode = true
 text = "Main menu"
 metadata/_edit_use_anchors_ = true
+
+[node name="LineGraph" parent="." instance=ExtResource("16_pkbyk")]
+unique_name_in_owner = true
+offset_left = 495.0
+offset_top = 421.0
+offset_right = 495.0
+offset_bottom = 421.0
 
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]

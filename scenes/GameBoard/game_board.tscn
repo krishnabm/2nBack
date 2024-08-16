@@ -32,28 +32,29 @@ unique_name_in_owner = true
 [node name="SlotGrid" parent="." instance=ExtResource("3_hqvqb")]
 unique_name_in_owner = true
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="DebugPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
 offset_left = 40.0
 offset_top = 4.0
 offset_right = 1712.0
 offset_bottom = 132.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_nh2ha")
 
-[node name="Stack" type="VBoxContainer" parent="PanelContainer"]
+[node name="Stack" type="VBoxContainer" parent="DebugPanel"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/Stack"]
+[node name="Label" type="Label" parent="DebugPanel/Stack"]
 layout_mode = 2
 theme = ExtResource("2_lcqmc")
 theme_override_colors/font_color = Color(0.87, 0.3393, 0.401215, 1)
 text = "!! Debug Panel !!"
 horizontal_alignment = 1
 
-[node name="ScoreBar" type="HBoxContainer" parent="PanelContainer/Stack"]
+[node name="ScoreBar" type="HBoxContainer" parent="DebugPanel/Stack"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="NLabel" type="Label" parent="PanelContainer/Stack/ScoreBar"]
+[node name="NLabel" type="Label" parent="DebugPanel/Stack/ScoreBar"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -66,7 +67,7 @@ text = "NVal: 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Round" type="Label" parent="PanelContainer/Stack/ScoreBar"]
+[node name="Round" type="Label" parent="DebugPanel/Stack/ScoreBar"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -79,7 +80,7 @@ text = "Round: 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TPLabel" type="Label" parent="PanelContainer/Stack/ScoreBar"]
+[node name="TPLabel" type="Label" parent="DebugPanel/Stack/ScoreBar"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -92,7 +93,7 @@ text = "TP: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FPLabel" type="Label" parent="PanelContainer/Stack/ScoreBar"]
+[node name="FPLabel" type="Label" parent="DebugPanel/Stack/ScoreBar"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -105,7 +106,7 @@ text = "FP: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FNLabel" type="Label" parent="PanelContainer/Stack/ScoreBar"]
+[node name="FNLabel" type="Label" parent="DebugPanel/Stack/ScoreBar"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

@@ -1,0 +1,161 @@
+[gd_scene load_steps=12 format=3 uid="uid://c5y1k6dyndtsh"]
+
+[ext_resource type="Script" path="res://scenes/util/LineGraph/line_graph.gd" id="1_hnuhu"]
+[ext_resource type="Script" path="res://scenes/util/LineGraph/chart_line.gd" id="2_pelqr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h0fpr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wua2j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kbwxs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6i6pg"]
+draw_center = false
+border_width_right = 2
+border_color = Color(0.298039, 0.486275, 0.619608, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e5sih"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_36fi2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wlkrv"]
+
+[sub_resource type="Gradient" id="Gradient_fq4ad"]
+interpolation_mode = 2
+colors = PackedColorArray(0.67, 0.3551, 0.38659, 1, 1, 0.6, 0.639216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4wonc"]
+draw_center = false
+border_width_top = 2
+border_color = Color(0.298039, 0.486275, 0.619608, 1)
+
+[node name="Root" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_hnuhu")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 270.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_h0fpr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="LeftContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wua2j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/LeftContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="YAxisContainer" type="HBoxContainer" parent="PanelContainer/HBoxContainer/LeftContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+theme_override_constants/separation = 0
+
+[node name="YAxisTextContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer/LeftContainer/VBoxContainer/YAxisContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_kbwxs")
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/LeftContainer/VBoxContainer/YAxisContainer/YAxisTextContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.2, 0.329412, 0.419608, 1)
+text = "NVal"
+
+[node name="YAxisScaleContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer/LeftContainer/VBoxContainer/YAxisContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6i6pg")
+
+[node name="Label20" type="Label" parent="PanelContainer/HBoxContainer/LeftContainer/VBoxContainer/YAxisContainer/YAxisScaleContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.298039, 0.486275, 0.619608, 1)
+theme_override_font_sizes/font_size = 10
+text = "20"
+
+[node name="Label10" type="Label" parent="PanelContainer/HBoxContainer/LeftContainer/VBoxContainer/YAxisContainer/YAxisScaleContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.298039, 0.486275, 0.619608, 1)
+theme_override_font_sizes/font_size = 10
+text = "10"
+
+[node name="Label0" type="Label" parent="PanelContainer/HBoxContainer/LeftContainer/VBoxContainer/YAxisContainer/YAxisScaleContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.298039, 0.486275, 0.619608, 1)
+theme_override_font_sizes/font_size = 10
+text = "0"
+
+[node name="DeadZone" type="PanelContainer" parent="PanelContainer/HBoxContainer/LeftContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_e5sih")
+
+[node name="RightContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 12.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_36fi2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/RightContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="GraphArea" type="PanelContainer" parent="PanelContainer/HBoxContainer/RightContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wlkrv")
+
+[node name="ChartLine" type="Line2D" parent="PanelContainer/HBoxContainer/RightContainer/VBoxContainer/GraphArea"]
+unique_name_in_owner = true
+width = 5.0
+default_color = Color(0.298039, 0.486275, 0.619608, 1)
+gradient = SubResource("Gradient_fq4ad")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+script = ExtResource("2_pelqr")
+
+[node name="XAxisContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer/RightContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_4wonc")
+
+[node name="Label0" type="Label" parent="PanelContainer/HBoxContainer/RightContainer/VBoxContainer/XAxisContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.298039, 0.486275, 0.619608, 1)
+theme_override_font_sizes/font_size = 10
+text = "0"
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/RightContainer/VBoxContainer/XAxisContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.2, 0.329412, 0.419608, 1)
+text = "Session"
+
+[node name="Label10" type="Label" parent="PanelContainer/HBoxContainer/RightContainer/VBoxContainer/XAxisContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.298039, 0.486275, 0.619608, 1)
+theme_override_font_sizes/font_size = 10
+text = "10"

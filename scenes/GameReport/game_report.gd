@@ -4,12 +4,11 @@ extends Node2D
 #region Members
 var database: SQLite
 var dbOpsThread: Thread
-var f1: Function
 #endregion
 
 #region Nodes
 @onready var secondary_stats_container = %SecondaryStatsContainer
-@onready var chart:Chart = %Chart
+@onready var line_graph = %LineGraph
 #endregion
 
 #region Methods
@@ -56,7 +55,7 @@ func store_stats_db():
 		}
 		database.insert_row("stats", data)
 	
-	print(fetch_stats_db(database))
+	line_graph.call("plot_graph",fetch_stats_db(database))
 
 func fetch_stats_db(_database: SQLite):
 	var query_string : String = "SELECT * FROM stats ORDER BY tsId DESC LIMIT ?;"
@@ -71,47 +70,6 @@ func fetch_stats_db(_database: SQLite):
 		var nValues = res.map(func(row): return row.nValue)
 		var aggrFalseCount = res.map(func(row): return row.pfp + row.sfp + row.pfn + row.sfn)
 		return [tsIds, nValues, aggrFalseCount]
-	
-	
-	#region easy charts
-	#var cp: ChartProperties = ChartProperties.new()
-	#cp.colors.frame = Color(0.08627451211214, 0.10196078568697, 0.11372549086809)
-	#cp.colors.background = Color.TRANSPARENT
-	#cp.colors.grid = Color("#283442")
-	#cp.colors.ticks = Color("#283442")
-	#cp.colors.text = Color.WHITE_SMOKE
-	#cp.draw_bounding_box = false
-	#cp.title = "Air Quality Monitoring"
-	#cp.x_label = "Dates"
-	#cp.y_label = "N Values"
-	#cp.x_scale = 1
-	#cp.y_scale = 1
-	#cp.interactive = true # false by default, it allows the chart to create a tooltip to show point values
-	## and interecept clicks on the plot
-	#
-	## Let's add values to our functions
-	#f1 = Function.new()
-	#f1._init(
-		#nValues, nValues, "NValue", # This will create a function with x and y values taken by the Arrays 
-						## we have created previously. This function will also be named "Pressure"
-						## as it contains 'pressure' values.
-						## If set, the name of a function will be used both in the Legend
-						## (if enabled thourgh ChartProperties) and on the Tooltip (if enabled).
-		## Let's also provide a dictionary of configuration parameters for this specific function.
-		#{ 
-			#color = Color("#36a2eb"), 		# The color associated to this function
-			#marker = Function.Marker.CIRCLE, 	# The marker that will be displayed for each drawn point (x,y)
-											## since it is `NONE`, no marker will be shown.
-			#type = Function.Type.LINE, 		# This defines what kind of plotting will be used, 
-											## in this case it will be a Linear Chart.
-			#interpolation = Function.Interpolation.STAIR 	# Interpolation mode, only used for 
-															## Line Charts and Area Charts.
-		#}
-	#)
-	#
-	## Now let's plot our data
-	#chart.plot([f1], cp)
-	#endregion
 
 func _exit_tree():
 	if dbOpsThread.is_alive() or dbOpsThread.is_started():
