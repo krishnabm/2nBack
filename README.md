@@ -3,7 +3,7 @@
 > 2nBack was created for [GMTK Game Jam 2024](https://itch.io/jam/gmtk-2024).
 > Check it out on [Itch.io](https://kalkisabzi.itch.io/2nbackgame)
 
-> [!TIP]
+> [!Note]
 > [n-back - Wikipedia](https://en.wikipedia.org/wiki/N-back)
 
 ![Game Icon](/res/assets/2nSlotDefaultIcon.png)
