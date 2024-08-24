@@ -13,8 +13,17 @@
 
 ## ⚙️ Core Gameplay Mechanics
 
-Visual and Auditory Sequences: Players are presented with a series of visual shapes and sounds. Your task is to remember and identify if the current stimulus matches the one presented n steps earlier. 
-Single n-back mode
+Visual and Auditory Sequences: Players are presented with a series of visual shapes and sounds. Your task is to remember and identify if the current cue matches the one presented n steps earlier. 
+
+### 👁️‍🗨️ Single n-back mode
+Keep track of the visual cues and hit the tapper if the current cue matches the cue n turns ago. 
+
+### 👁️‍🗨️👂 Dual n-back mode
+Here you keep track of two independent cues every round (visual and auditory). Hit the appropriate tapper if either cue matches the one from n turns ago. 
+
+### 👁️‍🗨️👂👅 Godlike n-back mode
+Will implement when screens become lickable. 
+
 
 ## 📈 Performance Tracking:
 
